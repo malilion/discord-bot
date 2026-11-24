@@ -62,6 +62,10 @@ pbpaste | grep -qE '^https://(ptb\.|canary\.)?discord(app)?\.com/api/webhooks/' 
 
 ## 定期維護
 
+- **備用觸發（cron-job.org）**：GitHub 內建排程不一定準時，所以另外用 cron-job.org 每 30 分鐘呼叫一次
+  `POST https://api.github.com/repos/malilion/discord-bot/actions/workflows/sync.yml/dispatches`（body `{"ref":"main"}`）。
+  用的是只有 Actions 讀寫權限的 fine-grained token，**約 2027-11 底到期**；到期前到 GitHub → Settings → Developer settings → Fine-grained tokens 重新產生，貼回 cron-job.org 的 `Authorization: Bearer …` header。
+  兩邊同時觸發也沒關係，workflow 有 `concurrency` 會排隊，不會重複發文。
 - **Threads token 每 60 天到期**（目前這把約 2027-01-23 到期）。到期前執行：
   ```bash
   THREADS_ACCESS_TOKEN=目前的token node scripts/refresh-threads-token.js
