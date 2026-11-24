@@ -33,7 +33,7 @@
   },
   "discord": {
     "username": "資源小幫手",
-    "avatarUrl": "",
+    "avatarUrl": "https://raw.githubusercontent.com/malilion/discord-bot/main/assets/bot-avatar.png",
     "forumChannel": false,
     "maxPostsPerRun": 25
   }
