@@ -1,3 +1,55 @@
 {
-  "sources": {}
+  "sources": {
+    "threads": {
+      "initialized": true,
+      "seen": [
+        "threads:18074281922322699",
+        "threads:18104231809844811",
+        "threads:18179217190405878",
+        "threads:17893735944497351",
+        "threads:18375221470200945",
+        "threads:17940221067234504",
+        "threads:17902285809284942",
+        "threads:18082127435185646",
+        "threads:18103241384047258",
+        "threads:17990333792994983",
+        "threads:17945675841212066",
+        "threads:18021560438838106",
+        "threads:18009864479731230",
+        "threads:18040220906607822",
+        "threads:18096686162264630",
+        "threads:18054493985757128",
+        "threads:18106606255866179",
+        "threads:17897920083333973",
+        "threads:18087657890570847",
+        "threads:18157133035469875",
+        "threads:17922022980385318",
+        "threads:18118213720876364",
+        "threads:17926687413359445",
+        "threads:18041159618814973",
+        "threads:17979542298043770"
+      ],
+      "backfilling": true
+    },
+    "facebook": {
+      "initialized": false,
+      "seen": [],
+      "backfilling": false
+    },
+    "rss": {
+      "initialized": true,
+      "seen": [
+        "rss:https://www.malilion.com/articles/hello-malilion",
+        "rss:https://www.malilion.com/articles/malilion-toolbox",
+        "rss:https://www.malilion.com/articles/meta-muse-taiwan-early-access",
+        "rss:https://www.malilion.com/articles/meta-muse-trial-report",
+        "rss:https://www.malilion.com/articles/git-commands-basics",
+        "rss:https://www.malilion.com/articles/git-commands-history-branch",
+        "rss:https://www.malilion.com/articles/git-commands-remote-rescue",
+        "rss:https://www.malilion.com/articles/software-testing-guide"
+      ],
+      "backfilling": true
+    }
+  },
+  "replies": {}
 }
