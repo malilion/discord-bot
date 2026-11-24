@@ -9,7 +9,7 @@ import { shouldSync } from './filter.js';
 import { buildPayload, buildReplyPayload, postToDiscord } from './discord.js';
 import { loadState, saveState, sourceState, markSeen } from './state.js';
 import { MissingCredentialsError } from './util.js';
-import { fetchRadarData, buildRadarPayload, shouldPostRadar, taipeiNow } from './radar.js';
+import { fetchRadarData, pickCategories, buildCategoryPost, shouldPostCategory, taipeiNow, CATEGORIES } from './radar.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const FETCHERS = { threads: fetchThreads, facebook: fetchFacebook, rss: fetchRss };
@@ -134,31 +134,58 @@ async function main() {
   }
 }
 
-/** 每天一篇 Malilion AI Radar 日報 */
+/** Malilion AI Radar：每天每個類別一篇，分別發到科技雷達與學習資源論壇 */
 async function postRadar(state, cfg, errors) {
-  const hook = process.env[cfg.webhookEnv ?? 'DISCORD_RADAR_WEBHOOK_URL'];
-  if (!hook && !DRY_RUN) {
-    console.log(`– radar: 尚未設定 ${cfg.webhookEnv}，略過`);
-    return;
-  }
   state.radar ??= {};
+  state.radar.posted ??= {};
+  state.radar.seen ??= {};
   const force = process.env.RADAR_FORCE === '1';
-  if (!force && !shouldPostRadar(cfg, state.radar)) return;
+  const due = CATEGORIES.filter((c) => {
+    const envName = cfg.targets?.[c.target]?.webhookEnv;
+    if (!envName || (!process.env[envName] && !DRY_RUN)) return false; // 該論壇還沒設定 Webhook
+    return force || shouldPostCategory(cfg, state.radar, c.key);
+  });
+  const skipped = [...new Set(CATEGORIES.map((c) => cfg.targets?.[c.target]?.webhookEnv))]
+    .filter((e) => e && !process.env[e] && !DRY_RUN);
+  for (const e of skipped) console.log(`– radar: 尚未設定 ${e}，相關類別略過`);
+  if (!due.length) return;
+
+  let data;
   try {
-    if (!DRY_RUN) checkWebhook(cfg.webhookEnv, hook);
-    const data = await fetchRadarData(cfg.baseUrl);
-    const payload = buildRadarPayload(data, cfg);
-    if (DRY_RUN) {
-      console.log(`\n[dry-run] radar\n${JSON.stringify(payload, null, 2)}`);
-      return;
-    }
-    await postToDiscord(hook, payload);
-    state.radar.lastDate = taipeiNow().date;
-    await saveState(STATE_PATH, state);
-    console.log(`✓ 已發送科技雷達日報 ${state.radar.lastDate}`);
+    data = await fetchRadarData(cfg.baseUrl);
   } catch (err) {
     errors.push(`[radar] ${err.message}`);
-    console.error(`✗ 科技雷達日報失敗: ${err.message}`);
+    console.error(`✗ 讀取 AI Radar 失敗: ${err.message}`);
+    return;
+  }
+  const sections = pickCategories(data);
+  const today = taipeiNow().date;
+
+  for (const cat of due) {
+    const seenList = state.radar.seen[cat.key] ?? [];
+    const post = buildCategoryPost(cat, sections[cat.key], new Set(seenList), cfg);
+    if (!post) {
+      console.log(`– radar/${cat.key}: 今天沒有新內容`);
+      if (!DRY_RUN) state.radar.posted[cat.key] = today;
+      continue;
+    }
+    if (DRY_RUN) {
+      console.log(`\n[dry-run] radar/${cat.key}\n${JSON.stringify(post.payload, null, 2)}`);
+      continue;
+    }
+    try {
+      const hook = process.env[cfg.targets[cat.target].webhookEnv];
+      checkWebhook(cfg.targets[cat.target].webhookEnv, hook);
+      await postToDiscord(hook, post.payload);
+      state.radar.posted[cat.key] = today;
+      // 記住發過的連結（每類最多 1000 筆），之後不重複
+      state.radar.seen[cat.key] = [...seenList, ...post.links].slice(-1000);
+      await saveState(STATE_PATH, state);
+      console.log(`✓ 已發送 radar/${cat.key}（${post.links.length} 則）`);
+    } catch (err) {
+      errors.push(`[radar/${cat.key}] ${err.message}`);
+      console.error(`✗ radar/${cat.key} 失敗: ${err.message}`);
+    }
   }
 }
 

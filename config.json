@@ -372,10 +372,38 @@
   "radar": {
     "enabled": true,
     "baseUrl": "https://malilion.github.io/Malilion-AI-Radar",
-    "webhookEnv": "DISCORD_RADAR_WEBHOOK_URL",
     "postAfterHour": 9,
-    "itemsPerSection": 6,
     "username": "科技雷達",
-    "avatarUrl": "https://raw.githubusercontent.com/malilion/discord-bot/main/assets/bot-avatar.png"
+    "avatarUrl": "https://raw.githubusercontent.com/malilion/discord-bot/main/assets/bot-avatar.png",
+    "targets": {
+      "radar": {
+        "webhookEnv": "DISCORD_RADAR_WEBHOOK_URL"
+      },
+      "learn": {
+        "webhookEnv": "DISCORD_LEARN_WEBHOOK_URL"
+      }
+    },
+    "tags": {
+      "news": "1574630432681631854",
+      "official": "1574630507495555214",
+      "tools": "1574630546372427786",
+      "releases": "1574630594103746660",
+      "events": "1574630634721378354",
+      "papers": [
+        "1574629407165911060",
+        "1574629564435533834",
+        "1574629601647394827"
+      ],
+      "tutorials": [
+        "1574629478892839104",
+        "1574629564435533834",
+        "1574629639563911168"
+      ],
+      "research": [
+        "1574629523285221467",
+        "1574629564435533834",
+        "1574629601647394827"
+      ]
+    }
   }
 }

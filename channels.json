@@ -16,14 +16,15 @@
         { "name": "📖｜好文分享", "type": "forum", "topic": "值得一讀的文章、影片、Podcast" },
         { "name": "📰｜綜合資訊", "type": "forum", "readOnly": true, "syncTarget": true, "topic": "自動同步碼力獅的 Threads 貼文與留言，可用標籤篩選" },
         { "name": "📝｜部落格文章", "type": "forum", "readOnly": true, "syncTarget": true, "topic": "自動同步碼力獅部落格（malilion.com）的新文章" },
-        { "name": "🎓｜學習資源", "type": "text", "topic": "課程、教學、書單、模板，好的學習資源都歡迎分享 🎓" },
-        { "name": "📡｜科技雷達", "type": "forum", "readOnly": true, "syncTarget": true, "topic": "每天 9 點後一篇 Malilion AI Radar 日報" }
+        { "name": "🎓｜學習資源", "type": "forum", "readOnly": true, "syncTarget": true, "topic": "每天自動整理 AI 熱門論文、教學實作、研究與深度文章" },
+        { "name": "📡｜科技雷達", "type": "forum", "readOnly": true, "syncTarget": true, "topic": "每天自動整理 AI 新聞、官方動態、開源工具、版本更新與活動" }
       ]
     },
     {
       "name": "———社群交流———",
       "channels": [
         { "name": "❓｜問題求助", "type": "forum", "topic": "卡關了嗎？開一篇貼文問大家，解決後記得標記已解決 ✅" },
+        { "name": "💬｜學習討論", "type": "text", "topic": "看到好的學習資源、有學習問題都可以在這裡聊 📚" },
         { "name": "💬｜閒聊", "type": "text", "topic": "什麼都可以聊，輕鬆就好 ☕" },
         { "name": "🚀｜作品分享", "type": "text", "topic": "分享你做的網站、App、工具或作品，互相給回饋 🚀" },
         { "name": "💡｜建議回饋", "type": "text", "topic": "對社群或內容有任何建議，都歡迎在這裡告訴我們 💡" },

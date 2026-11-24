@@ -134,37 +134,54 @@ test('留言 payload：作者名、圖片、空內容、擋 mention', () => {
   assert.equal(buildReplyPayload({ username: 'x', text: '', url: 'https://t/1' }).content, '（附件）https://t/1');
 });
 
-import { buildRadarPayload, shouldPostRadar } from '../src/radar.js';
+import { pickCategories, buildCategoryPost, shouldPostCategory, CATEGORIES } from '../src/radar.js';
 
-test('科技雷達：每天只發一次，台北 9 點後發；首次設定立刻發', () => {
+test('雷達：每個類別每天只發一次，台北 9 點後；首次立刻發', () => {
   const cfg = { postAfterHour: 9 };
   const at = (iso) => new Date(iso);
-  assert.equal(shouldPostRadar(cfg, {}, at('2026-11-24T00:00:00Z')), true);                       // 從沒發過
-  assert.equal(shouldPostRadar(cfg, { lastDate: '2026-11-24' }, at('2026-11-24T05:00:00Z')), false); // 今天已發
-  assert.equal(shouldPostRadar(cfg, { lastDate: '2026-11-23' }, at('2026-11-23T23:30:00Z')), false); // 台北 7:30 還太早
-  assert.equal(shouldPostRadar(cfg, { lastDate: '2026-11-23' }, at('2026-11-24T01:10:00Z')), true);  // 台北 9:10
+  assert.equal(shouldPostCategory(cfg, {}, 'news', at('2026-11-24T00:00:00Z')), true);
+  assert.equal(shouldPostCategory(cfg, { posted: { news: '2026-11-24' } }, 'news', at('2026-11-24T05:00:00Z')), false);
+  assert.equal(shouldPostCategory(cfg, { posted: { news: '2026-11-23' } }, 'news', at('2026-11-23T23:30:00Z')), false);
+  assert.equal(shouldPostCategory(cfg, { posted: { news: '2026-11-23' } }, 'news', at('2026-11-24T01:10:00Z')), true);
+  assert.equal(shouldPostCategory(cfg, { posted: { news: '2026-11-24' } }, 'tools', at('2026-11-24T05:00:00Z')), true); // 各類別獨立
 });
 
-test('科技雷達：分區整理、只放 24 小時內的業界新聞、標題括號不壞連結', () => {
-  const now = new Date('2026-11-24T04:00:00Z');
-  const p = buildRadarPayload({
+test('雷達：依來源分到正確類別，學習資源與新聞分開', () => {
+  const now = Date.parse('2026-11-24T04:00:00Z');
+  const s = pickCategories({
     ai: { items: [
-      { title: 'New [model] out', link: 'https://a/1', source: 'OpenAI', score: 2, pubDate: '2026-11-24T02:00:00Z' },
-      { title: 'Old news', link: 'https://a/2', source: 'X', score: 9, pubDate: '2026-11-20T00:00:00Z' },
+      { title: 'Model launch', link: 'n1', source: 'TechCrunch', type: 'media', score: 2, pubDate: '2026-11-24T02:00:00Z' },
+      { title: 'Lab post', link: 'o1', source: 'OpenAI', type: 'lab', score: 1, pubDate: '2026-11-24T01:00:00Z' },
+      { title: 'Research', link: 'r1', source: 'Google Research', type: 'lab', score: 1, pubDate: '2026-11-23T01:00:00Z' },
+      { title: 'Essay', link: 'e1', source: 'Latent Space', type: 'media', score: 9, pubDate: '2026-11-23T01:00:00Z' },
     ] },
     dev: { items: [
-      { title: 'foo/bar', link: 'https://g/1', source: 'GitHub 今日趨勢', type: 'github' },
-      { title: '1.0.0', link: 'https://r/1', source: 'Codex', type: 'releases', pubDate: '2026-11-23T20:00:00Z' },
+      { title: 'repo', link: 'g1', source: 'GitHub 今日趨勢', type: 'github' },
+      { title: 'TIL', link: 't1', source: 'Simon Willison', type: 'blogs', pubDate: '2026-11-24T00:00:00Z' },
+      { title: '1.0', link: 'v1', source: 'Codex', type: 'releases', pubDate: '2026-11-23T20:00:00Z' },
     ] },
-    papers: null,
-    events: { items: [{ title: 'Meetup', link: 'https://e/1', start: '2026-11-25T11:30:00Z', source: 'GDG Taipei' }] },
-  }, { baseUrl: 'https://radar/' }, now);
-  const byTitle = Object.fromEntries(p.embeds.filter((e) => e.title).map((e) => [e.title, e.description]));
-  assert.equal(p.thread_name, '📡 科技雷達日報｜11/24（二）');
-  assert.equal(byTitle['🏢 AI 業界動態（24 小時內）'], '• [New ［model］ out](https://a/1) · OpenAI');
-  assert.match(byTitle['🔥 GitHub 今日趨勢'], /foo\/bar/);
-  assert.match(byTitle['🚀 版本更新'], /Codex 1\.0\.0/);
-  assert.match(byTitle['📅 近期社群活動'], /11\/25（三）/);
-  assert.ok(!('📄 Hugging Face 熱門論文' in byTitle)); // 沒資料的區塊不顯示
-  assert.match(p.embeds.at(-1).description, /https:\/\/radar\/newsletter\/latest\.html/);
+    papers: { items: [{ title: 'P', link: 'p1', type: 'daily', rank: 1, upvotes: 3 }] },
+    events: { items: [] },
+  }, now);
+  const links = (k) => s[k].flatMap((x) => x.items.map((i) => i.link));
+  assert.deepEqual(links('news'), ['n1']);          // 深度文章不算新聞
+  assert.deepEqual(links('official'), ['o1']);      // 研究部落格不算官方動態
+  assert.deepEqual(links('research'), ['r1', 'e1']);
+  assert.deepEqual(links('tutorials'), ['t1']);
+  assert.deepEqual(links('tools'), ['g1']);
+  assert.deepEqual(links('releases'), ['v1']);
+  assert.deepEqual(links('papers'), ['p1']);
+});
+
+test('雷達：貼文帶標籤、已發過的連結不重複、沒新內容就不發', () => {
+  const cat = CATEGORIES.find((c) => c.key === 'papers');
+  const sections = [{ title: '論文', items: [{ title: 'A [x]', link: 'a' }, { title: 'B', link: 'b' }], max: 5 }];
+  const cfg = { baseUrl: 'https://radar/', tags: { papers: ['T1', 'T2'] } };
+  const now = new Date('2026-11-24T04:00:00Z');
+  const post = buildCategoryPost(cat, sections, new Set(['a']), cfg, now);
+  assert.equal(post.payload.thread_name, '📄 熱門論文｜11/24（二）');
+  assert.deepEqual(post.payload.applied_tags, ['T1', 'T2']);
+  assert.deepEqual(post.links, ['b']);
+  assert.equal(post.payload.embeds[0].description, '• [B](b)');
+  assert.equal(buildCategoryPost(cat, sections, new Set(['a', 'b']), cfg, now), null);
 });

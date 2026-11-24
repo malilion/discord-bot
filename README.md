@@ -6,7 +6,8 @@
 ```
 Threads 貼文＋留言 ─▶ 📰｜綜合資訊（論壇，自動分類標籤，留言放進貼文）
 部落格 RSS        ─▶ 📝｜部落格文章（論壇，自動分類標籤）
-Malilion AI Radar ─▶ 📡｜科技雷達（每天 09:00 後一篇日報）
+Malilion AI Radar ─▶ 📡｜科技雷達（新聞／官方動態／開源工具／版本更新／活動，每類每天一篇）
+                  └▶ 🎓｜學習資源（論文／教學實作／研究與深度文章，每類每天一篇）
                        └─ state/seen.json 記錄已發過的內容，不會重複發
 ```
 
@@ -20,7 +21,8 @@ Malilion AI Radar ─▶ 📡｜科技雷達（每天 09:00 後一篇日報）
 |---|---|---|
 | Threads（自己的貼文） | 📰｜綜合資訊 | 每篇一個論壇貼文，帶「🧵 Threads」＋關鍵字分類標籤；留言依時間搬進該貼文，最近 14 天的貼文會持續補新留言 |
 | 部落格 `https://www.malilion.com/rss.xml` | 📝｜部落格文章 | 每篇一個論壇貼文，帶關鍵字分類標籤 |
-| [Malilion AI Radar](https://malilion.github.io/Malilion-AI-Radar/) | 📡｜科技雷達 | 每天一篇日報：AI 業界動態（24 小時內）、GitHub 今日趨勢、Hacker News、版本更新（每個專案一則）、HF 每日熱門論文、近期社群活動 |
+| [Malilion AI Radar](https://malilion.github.io/Malilion-AI-Radar/) | 📡｜科技雷達 | 台北 09:00 後每類一篇：📰 AI 新聞、🏢 官方動態、🛠️ 開源工具、🚀 版本更新、📅 社群活動 |
+| Malilion AI Radar（學習類） | 🎓｜學習資源 | 📄 熱門論文、📘 教學實作（Simon Willison、DEV 等）、🧠 研究與深度文章（各大研究部落格、Latent Space 等） |
 | Facebook 粉專 | 📰｜綜合資訊 | 程式已支援，填入 token 才會啟用 |
 
 分類標籤靠關鍵字判斷（`config.json` → `discord.tags.rules`），沒命中任何分類會標「💡 觀點心得」。想調整分類，改關鍵字即可。
@@ -38,6 +40,7 @@ Repo → Settings → Secrets and variables → Actions：
 | `DISCORD_WEBHOOK_URL` | 📰｜綜合資訊 的 Webhook |
 | `DISCORD_BLOG_WEBHOOK_URL` | 📝｜部落格文章 的 Webhook |
 | `DISCORD_RADAR_WEBHOOK_URL` | 📡｜科技雷達 的 Webhook |
+| `DISCORD_LEARN_WEBHOOK_URL` | 🎓｜學習資源 的 Webhook |
 | `THREADS_ACCESS_TOKEN` | Threads 長效 token（需要 `threads_basic`、`threads_read_replies`） |
 | `FB_PAGE_ID`、`FB_PAGE_ACCESS_TOKEN` | （選用）Facebook 粉專 |
 
@@ -80,14 +83,15 @@ pbpaste | grep -qE '^https://(ptb\.|canary\.)?discord(app)?\.com/api/webhooks/' 
 | `sources.threads.replies` | 留言同步：`followDays` 追蹤幾天內的貼文、`maxPerRun` 每次最多搬幾則 |
 | `discord.tags` | 📰｜綜合資訊 的來源標籤、分類關鍵字與預設標籤 |
 | `discord.maxPostsPerRun` | 每次最多發幾篇，多的下次再發 |
-| `radar.postAfterHour` | 科技雷達日報在台北時間幾點後發 |
-| `radar.itemsPerSection` | 日報每個區塊最多幾則 |
+| `radar.postAfterHour` | 雷達貼文在台北時間幾點後發 |
+| `radar.targets` | 科技雷達／學習資源各用哪個 Webhook secret |
+| `radar.tags` | 每個類別貼文要套的論壇標籤 ID |
 | `filter.excludeKeywords` | 含這些字就不同步（預設 `#不同步`） |
 
 ## 手動操作
 
 - **立刻同步**：Actions →「Sync to Discord」→ Run workflow（一次最多 25 篇）
-- **重發今天的科技雷達日報**：把 `state/seen.json` 裡 `radar.lastDate` 刪掉後推上去，再手動跑一次
+- **重發今天的雷達貼文**：把 `state/seen.json` 裡 `radar.posted` 的該類別刪掉後推上去，再手動跑一次（發過的連結記在 `radar.seen`，不會重複）
 - **重新搬某個來源**：把 `state/seen.json` 裡該來源整段刪掉再推上去
 
 ## 本機測試
@@ -103,8 +107,9 @@ node src/index.js --dry-run       # 只印出會發什麼，不改 state
 
 - ———重要資訊———：📜 歡迎與規則（唯讀）、📣 公告（唯讀）、👋 自我介紹
 - ———資源分享———：🛠️ 工具推薦、📖 好文分享、📰 綜合資訊、📝 部落格文章、🎓 學習資源、📡 科技雷達
+- ———社群交流——— 另有 💬 學習討論（聊學習資源）
 - ———社群交流———：❓ 問題求助、💬 閒聊、🚀 作品分享、💡 建議回饋、🎮 遊戲分享
 - ———語音頻道———：☕ 聊天室、📚 共工讀書室
 - ———Cat Island———：🐱 cat-island
 
-自動同步的三個論壇只有 Bot 能開貼文，成員可以在貼文裡留言。
+自動同步的四個論壇只有 Bot 能開貼文，成員可以在貼文裡留言。
