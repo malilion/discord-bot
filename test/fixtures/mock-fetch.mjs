@@ -20,7 +20,7 @@ globalThis.fetch = async (input, init = {}) => {
     const next = offset + limit < TOTAL ? (() => { const n = new URL(url); n.searchParams.set('offset', offset + limit); return n.toString(); })() : undefined;
     return new Response(JSON.stringify({ data, paging: next ? { next } : {} }));
   }
-  if (url.hostname === 'discord.test') {
+  if (url.hostname === 'discord.com') {
     const body = JSON.parse(init.body);
     appendFileSync(process.env.POSTED_LOG, body.embeds[0].title + '\n');
     return new Response(JSON.stringify({ id: 'x' }));

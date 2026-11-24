@@ -28,6 +28,12 @@ async function main() {
     console.log('– 尚未設定 DISCORD_WEBHOOK_URL，本次不執行同步');
     return;
   }
+  if (!DRY_RUN && !/^https:\/\/(?:ptb\.|canary\.)?discord(?:app)?\.com\/api\/webhooks\/\d+\/[\w-]+/.test(webhook.trim())) {
+    // 只印出網址的開頭，避免把密碼外洩到 log
+    let hint = '無法解析的字串';
+    try { const u = new URL(webhook.trim()); hint = `${u.host}/${u.pathname.split('/')[1] ?? ''}/…`; } catch {}
+    throw new Error(`DISCORD_WEBHOOK_URL 不是 Webhook 網址（目前是 ${hint}）。請到頻道設定 → 整合 → Webhook →「複製 Webhook 網址」後重新設定`);
+  }
 
   const queue = [];
   const errors = [];
