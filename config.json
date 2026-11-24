@@ -16,7 +16,11 @@
       "enabled": true,
       "label": "Facebook 粉專",
       "color": "#1877F2",
-      "graphApiVersion": "v23.0"
+      "graphApiVersion": "v23.0",
+      "firstRunPostLatest": 3,
+      "skipDuplicatesOf": [
+        "threads"
+      ]
     },
     "rss": {
       "enabled": true,

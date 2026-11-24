@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path';
 import { fetchThreads, fetchThreadReplies } from './sources/threads.js';
 import { fetchFacebook } from './sources/facebook.js';
 import { fetchRss } from './sources/rss.js';
-import { shouldSync } from './filter.js';
+import { shouldSync, findDuplicate } from './filter.js';
 import { buildPayload, buildReplyPayload, postToDiscord } from './discord.js';
 import { loadState, saveState, sourceState, markSeen } from './state.js';
 import { MissingCredentialsError } from './util.js';
@@ -33,6 +33,7 @@ async function main() {
 
   const queue = [];
   const errors = [];
+  const fetched = {}; // 各來源這次抓到的貼文，用來跨平台去重
 
   for (const [name, cfg] of Object.entries(config.sources)) {
     if (!cfg.enabled) continue;
@@ -60,8 +61,15 @@ async function main() {
       continue;
     }
 
+    fetched[name] = items;
     const fresh = items.filter((it) => !src.seen.includes(it.id)).sort(byDate);
-    const wanted = fresh.filter((it) => shouldSync(it, config.filter));
+    let wanted = fresh.filter((it) => shouldSync(it, config.filter));
+    // 跨平台去重：例如粉專和 Threads 發了同一段文字，只留先同步的那個來源
+    for (const other of [].concat(cfg.skipDuplicatesOf ?? [])) {
+      const dups = wanted.filter((it) => findDuplicate(it, fetched[other] ?? []));
+      if (dups.length) console.log(`• ${name}: ${dups.length} 篇和 ${other} 重複，略過`);
+      wanted = wanted.filter((it) => !dups.includes(it));
+    }
     // 被過濾掉的直接記為已看過，之後不再判斷
     for (const it of fresh) if (!wanted.includes(it)) markSeen(src, it.id);
 

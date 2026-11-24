@@ -185,3 +185,20 @@ test('雷達：貼文帶標籤、已發過的連結不重複、沒新內容就�
   assert.equal(post.payload.embeds[0].description, '• [B](b)');
   assert.equal(buildCategoryPost(cat, sections, new Set(['a', 'b']), cfg, now), null);
 });
+
+import { findDuplicate } from '../src/filter.js';
+
+test('跨平台去重：同一段文字、節錄、不同內容、太短、時間差太多', () => {
+  const t = '2026-11-24T01:00:00Z';
+  const threads = [{ text: '推薦一個超好用的 AI 工具 Raycast，可以用快捷鍵叫出 ChatGPT 幫你翻譯和整理筆記 https://raycast.com', publishedAt: t }];
+  const same = { text: '推薦一個超好用的AI工具 Raycast，可以用快捷鍵叫出ChatGPT幫你翻譯和整理筆記！\nhttps://raycast.com/?utm=fb', publishedAt: '2026-11-24T03:00:00Z' };
+  const longer = { text: `${threads[0].text}\n\n補充：免費方案就夠用了，Pro 版多了 AI 功能。`, publishedAt: t };
+  const other = { text: '今天來聊聊怎麼用 GitHub Actions 自動部署網站，免費又省事', publishedAt: t };
+  const short = { text: '早安', publishedAt: t };
+  const late = { ...same, publishedAt: '2026-11-30T01:00:00Z' };
+  assert.ok(findDuplicate(same, threads));
+  assert.ok(findDuplicate(longer, threads));
+  assert.equal(findDuplicate(other, threads), null);
+  assert.equal(findDuplicate(short, [{ text: '早安', publishedAt: t }]), null);
+  assert.equal(findDuplicate(late, threads), null);
+});
