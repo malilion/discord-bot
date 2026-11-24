@@ -619,6 +619,68 @@
     }
   },
   "radar": {
-    "lastDate": "2026-11-24"
+    "lastDate": "2026-11-24",
+    "posted": {
+      "news": "2026-11-24",
+      "official": "2026-11-24",
+      "tools": "2026-11-24",
+      "releases": "2026-11-24",
+      "events": "2026-11-24"
+    },
+    "seen": {
+      "news": [
+        "https://www.theverge.com/tech/1040428/nvidia-jensen-huang-ceo-return",
+        "https://www.axios.com/2026/11/23/jensen-huang-nvidia-congress-dc-reaction",
+        "https://www.engadget.com/2325655/nvidia-jensen-huang-will-testify-publlicly-before-senators-on-december-3/",
+        "https://www.axios.com/2026/11/23/trump-vance-jensen-huang-nvidia-ceo-return",
+        "https://www.cnbc.com/2026/11/23/amazon-decarts-ai-acquisition.html",
+        "https://news.google.com/rss/articles/CBMizgFBVV95cUxNNGdXWU1GNlhhaFQ2dE5JdHlQb1dHMGlVaUVWSTAtb3BHN1U2U3BLOEhnSnVleDVmZ1lvTHdOQmRMOVlSSEp5cmJZZnlkVlZaVEh1WVpQVUIxS2ZlQWlhZlFGSm8zUHZfR19yVXZfeGdHaXVzNUNBcnJqRXFiN3gyNVdRX2o5MHN4eDB3WGVGYXp0QklBbTlMMmM4azJlUnZxRUZTb1VjSU1ISjU2aFc2VzBXbm83bGdVMU83cHNyTldFc2d3eVZQekRBWHNpUQ?oc=5",
+        "https://www.cnbc.com/2026/11/23/anthropic-nvidia-shares.html",
+        "https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/",
+        "https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html",
+        "https://arm.jonpalmisc.com/",
+        "https://ladybird.org/posts/alpha/",
+        "https://z.ai/blog/glm-5.4",
+        "https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF",
+        "https://blog.kagi.com/kagi-mail-public-beta"
+      ],
+      "official": [
+        "https://huggingface.co/blog/allenai/robotrack",
+        "https://blogs.nvidia.com/blog/nvidia-technologies-holidays-2026/",
+        "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/",
+        "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/",
+        "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+        "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards",
+        "https://claude.com/resources/articles/kpmg-todd-lohr-on-ai-when-your-data-is-also-your-clients-data",
+        "https://huggingface.co/blog/agentic-evals"
+      ],
+      "tools": [
+        "https://github.com/elementalsouls/Claude-BugHunter",
+        "https://github.com/obra/superpowers",
+        "https://github.com/HKUDS/CLI-Anything",
+        "https://github.com/jingyaogong/minimind",
+        "https://github.com/cursor/plugins",
+        "https://github.com/firecrawl/firecrawl",
+        "https://github.com/nginx/nginx",
+        "https://github.com/openvinotoolkit/openvino",
+        "https://recordhtml.com/",
+        "https://whistlestop.guide",
+        "https://play.neilkakkar.com/finish-the-line/",
+        "https://certyneo.com/en/tools/lecteur-pdf",
+        "https://office.puter.com/"
+      ],
+      "releases": [
+        "https://github.com/langchain-ai/langchain/releases/tag/langchain-qdrant%3D%3D1.2.0",
+        "https://github.com/langchain-ai/langchain/releases/tag/langchain-perplexity%3D%3D1.5.0",
+        "https://github.com/langchain-ai/langchain/releases/tag/langchain-ollama%3D%3D1.2.0",
+        "https://github.com/langchain-ai/langchain/releases/tag/langchain-tests%3D%3D1.2.0",
+        "https://github.com/langchain-ai/langchain/releases/tag/langchain-text-splitters%3D%3D1.2.0",
+        "https://github.com/ollama/ollama/releases/tag/v0.40.17"
+      ],
+      "events": [
+        "https://gdg.community.dev/events/details/google-gdg-taipei-presents-flutter-meetup-40/",
+        "https://gdg.community.dev/events/details/google-gdg-taipei-presents-devfest-taipei-2026/"
+      ]
+    }
   }
 }
