@@ -1,10 +1,11 @@
 import { firstUrl, hexToInt, sleep, splitTitle, truncate } from './util.js';
 import { pickTags } from './tags.js';
 
-const SOURCE_EMOJI = { threads: '🧵', facebook: '📘', rss: '📝' };
+const SOURCE_EMOJI = { threads: '🧵', facebook: '📘', rss: '📝', youtube: '🎬' };
 
 /** 把統一格式的貼文轉成 Discord webhook payload */
 export function buildPayload(item, sourceCfg = {}, discordCfg = {}) {
+  if (item.source === 'youtube') return buildVideoPayload(item, discordCfg);
   let title = item.title;
   let body = item.text ?? '';
   if (!title) ({ title, body } = splitTitle(body));
@@ -38,6 +39,29 @@ export function buildPayload(item, sourceCfg = {}, discordCfg = {}) {
   // 論壇頻道：每篇是一個貼文（討論串），帶上分類標籤，方便篩選與留言
   if (discordCfg.forumChannel) {
     payload.thread_name = truncate(title, 100);
+    const tags = pickTags(item, discordCfg.tags);
+    if (tags.length) payload.applied_tags = tags;
+  }
+  return payload;
+}
+
+/**
+ * YouTube 影片：內文只放影片網址，讓 Discord 顯示可以直接播放的預覽；
+ * 說明欄取前幾行，裡面的連結用 <> 包起來，避免多出其他預覽
+ */
+function buildVideoPayload(item, discordCfg = {}) {
+  const intro = (item.text ?? '')
+    .split('\n').map((l) => l.trim()).filter(Boolean).slice(0, 3).join('\n')
+    .replace(/(https?:\/\/[^\s<>]+)/g, '<$1>');
+  const content = `${intro ? `${truncate(intro, 600)}\n\n` : ''}▶️ ${item.url}`;
+  const payload = {
+    username: discordCfg.username || undefined,
+    avatar_url: discordCfg.avatarUrl || undefined,
+    content: truncate(content, 2000),
+    allowed_mentions: { parse: [] },
+  };
+  if (discordCfg.forumChannel) {
+    payload.thread_name = truncate(`${item.isShort ? '🩳 ' : ''}${item.title || 'YouTube 新影片'}`, 100);
     const tags = pickTags(item, discordCfg.tags);
     if (tags.length) payload.applied_tags = tags;
   }

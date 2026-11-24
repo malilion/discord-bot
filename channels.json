@@ -17,6 +17,7 @@
         { "name": "📰｜綜合資訊", "type": "forum", "readOnly": true, "syncTarget": true, "topic": "自動同步碼力獅的 Threads 貼文與留言，可用標籤篩選" },
         { "name": "📝｜部落格文章", "type": "forum", "readOnly": true, "syncTarget": true, "topic": "自動同步碼力獅部落格（malilion.com）的新文章" },
         { "name": "🎓｜學習資源", "type": "forum", "syncTarget": true, "topic": "Bot 每天整理論文、教學實作、研究文章；也歡迎成員分享學習資源" },
+        { "name": "🎬｜影片", "type": "forum", "readOnly": true, "syncTarget": true, "topic": "碼力獅 YouTube 頻道的新影片，每部一篇，可以直接播放" },
         { "name": "📡｜科技雷達", "type": "forum", "readOnly": true, "syncTarget": true, "topic": "每天自動整理 AI 新聞、官方動態、開源工具、版本更新與活動" }
       ]
     },

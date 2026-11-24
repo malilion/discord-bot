@@ -202,3 +202,32 @@ test('跨平台去重：同一段文字、節錄、不同內容、太短、時�
   assert.equal(findDuplicate(short, [{ text: '早安', publishedAt: t }]), null);
   assert.equal(findDuplicate(late, threads), null);
 });
+
+import { parseYoutubeFeed } from '../src/sources/youtube.js';
+
+const YT = `<?xml version="1.0"?><feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+<title>我的頻道</title>
+<entry><id>yt:video:abc123DEF45</id><yt:videoId>abc123DEF45</yt:videoId><title>Claude Code 實測 &amp; 心得</title>
+<link rel="alternate" href="https://www.youtube.com/watch?v=abc123DEF45"/><published>2026-11-20T10:00:00+00:00</published>
+<media:group><media:title>x</media:title><media:description>第一行介紹
+https://example.org/tool
+第三行
+第四行不會出現</media:description></media:group></entry>
+<entry><id>yt:video:short000001</id><yt:videoId>short000001</yt:videoId><title>一分鐘小技巧</title>
+<link rel="alternate" href="https://www.youtube.com/shorts/short000001"/><published>2026-11-21T10:00:00+00:00</published></entry>
+</feed>`;
+
+test('YouTube：解析影片、Shorts、Discord 內文只預覽影片', () => {
+  const [v, s] = parseYoutubeFeed(YT);
+  assert.equal(v.id, 'youtube:abc123DEF45');
+  assert.equal(v.title, 'Claude Code 實測 & 心得');
+  assert.equal(v.image, 'https://i.ytimg.com/vi/abc123DEF45/hqdefault.jpg');
+  assert.equal(s.isShort, true);
+  assert.equal(s.url, 'https://www.youtube.com/watch?v=short000001');
+  const p = buildPayload(v, {}, { forumChannel: true, tags: { source: { youtube: 'YT' } } });
+  assert.equal(p.thread_name, 'Claude Code 實測 & 心得');
+  assert.equal(p.content, '第一行介紹\n<https://example.org/tool>\n第三行\n\n▶️ https://www.youtube.com/watch?v=abc123DEF45');
+  assert.deepEqual(p.applied_tags, ['YT']);
+  assert.equal(p.embeds, undefined);
+  assert.equal(buildPayload(s, {}, { forumChannel: true }).thread_name, '🩳 一分鐘小技巧');
+});

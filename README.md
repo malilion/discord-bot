@@ -6,6 +6,7 @@
 ```
 Threads 貼文＋留言 ─▶ 📰｜綜合資訊（論壇，自動分類標籤，留言放進貼文）
 部落格 RSS        ─▶ 📝｜部落格文章（論壇，自動分類標籤）
+YouTube 頻道      ─▶ 🎬｜影片（論壇，每部影片一篇，可直接播放）
 Malilion AI Radar ─▶ 📡｜科技雷達（新聞／官方動態／開源工具／版本更新／活動，每類每天一篇）
                   └▶ 🎓｜學習資源（論文／教學實作／研究與深度文章，每類每天一篇）
                        └─ state/seen.json 記錄已發過的內容，不會重複發
@@ -23,6 +24,7 @@ Malilion AI Radar ─▶ 📡｜科技雷達（新聞／官方動態／開源工
 | 部落格 `https://www.malilion.com/rss.xml` | 📝｜部落格文章 | 每篇一個論壇貼文，帶關鍵字分類標籤 |
 | [Malilion AI Radar](https://malilion.github.io/Malilion-AI-Radar/) | 📡｜科技雷達 | 台北 09:00 後每類一篇：📰 AI 新聞、🏢 官方動態、🛠️ 開源工具、🚀 版本更新、📅 社群活動 |
 | Malilion AI Radar（學習類） | 🎓｜學習資源 | 📄 熱門論文、📘 教學實作（Simon Willison、DEV 等）、🧠 研究與深度文章（各大研究部落格、Latent Space 等） |
+| YouTube 頻道（`sources.youtube.channels` 填頻道 ID） | 🎬｜影片 | 每部影片一篇，內文放影片網址讓 Discord 直接播放；Shorts 標題前加 🩳；RSS 只提供最新 15 部 |
 | Facebook 粉專 | 📰｜綜合資訊 | 程式已支援，填入 token 才會啟用 |
 
 分類標籤靠關鍵字判斷（`config.json` → `discord.tags.rules`），沒命中任何分類會標「💡 觀點心得」。想調整分類，改關鍵字即可。
@@ -41,6 +43,7 @@ Repo → Settings → Secrets and variables → Actions：
 | `DISCORD_BLOG_WEBHOOK_URL` | 📝｜部落格文章 的 Webhook |
 | `DISCORD_RADAR_WEBHOOK_URL` | 📡｜科技雷達 的 Webhook |
 | `DISCORD_LEARN_WEBHOOK_URL` | 🎓｜學習資源 的 Webhook |
+| `DISCORD_YOUTUBE_WEBHOOK_URL` | 🎬｜影片 的 Webhook |
 | `THREADS_ACCESS_TOKEN` | Threads 長效 token（需要 `threads_basic`、`threads_read_replies`） |
 | `FB_PAGE_ID`、`FB_PAGE_ACCESS_TOKEN` | （選用）Facebook 粉專 |
 
@@ -110,10 +113,10 @@ node src/index.js --dry-run       # 只印出會發什麼，不改 state
 `channels.json` 記錄目前的頻道結構（可用 `scripts/setup-channels.js` 在新伺服器重建）：
 
 - ———重要資訊———：📜 歡迎與規則（唯讀）、📣 公告（唯讀）、👋 自我介紹
-- ———資源分享———：🛠️ 工具推薦、📖 好文分享、📰 綜合資訊、📝 部落格文章、🎓 學習資源、📡 科技雷達
+- ———資源分享———：🛠️ 工具推薦、📖 好文分享、📰 綜合資訊、📝 部落格文章、🎓 學習資源、📡 科技雷達、🎬 影片
 - ———社群交流——— 另有 💬 學習討論（聊學習資源）
 - ———社群交流———：❓ 問題求助、💬 閒聊、🚀 作品分享、💡 建議回饋、🎮 遊戲分享
 - ———語音頻道———：☕ 聊天室、📚 共工讀書室
 - ———Cat Island———：🐱 cat-island
 
-綜合資訊、部落格文章、科技雷達只有 Bot 能開貼文；學習資源成員也能發文。所有貼文都可以留言。
+綜合資訊、部落格文章、科技雷達、影片只有 Bot 能開貼文；學習資源成員也能發文。所有貼文都可以留言。

@@ -5,6 +5,7 @@ import { dirname, join } from 'node:path';
 import { fetchThreads, fetchThreadReplies } from './sources/threads.js';
 import { fetchFacebook } from './sources/facebook.js';
 import { fetchRss } from './sources/rss.js';
+import { fetchYoutube } from './sources/youtube.js';
 import { shouldSync, findDuplicate } from './filter.js';
 import { buildPayload, buildReplyPayload, postToDiscord } from './discord.js';
 import { loadState, saveState, sourceState, markSeen } from './state.js';
@@ -12,7 +13,7 @@ import { MissingCredentialsError } from './util.js';
 import { fetchRadarData, pickCategories, buildCategoryPost, shouldPostCategory, taipeiNow, CATEGORIES } from './radar.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const FETCHERS = { threads: fetchThreads, facebook: fetchFacebook, rss: fetchRss };
+const FETCHERS = { threads: fetchThreads, facebook: fetchFacebook, rss: fetchRss, youtube: fetchYoutube };
 
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');

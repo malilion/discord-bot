@@ -184,6 +184,118 @@
         "fallback": "1574613591506555001",
         "max": 5
       }
+    },
+    "youtube": {
+      "enabled": true,
+      "label": "YouTube",
+      "color": "#FF0000",
+      "channels": [],
+      "webhookEnv": "DISCORD_YOUTUBE_WEBHOOK_URL",
+      "firstRunPostLatest": "all",
+      "tags": {
+        "source": {},
+        "rules": [
+          {
+            "name": "🤖 AI 新知",
+            "id": "1574690881380946000",
+            "keywords": [
+              "ai",
+              "gpt",
+              "chatgpt",
+              "claude",
+              "gemini",
+              "llm",
+              "openai",
+              "anthropic",
+              "agent",
+              "copilot",
+              "cursor",
+              "midjourney",
+              "prompt",
+              "生成式",
+              "大模型",
+              "模型",
+              "人工智慧"
+            ]
+          },
+          {
+            "name": "🛠 工具",
+            "id": "1574690997542060082",
+            "keywords": [
+              "工具",
+              "tool",
+              "tools",
+              "app",
+              "extension",
+              "外掛",
+              "插件",
+              "chrome",
+              "vscode",
+              "raycast",
+              "notion",
+              "免費",
+              "懶人包",
+              "網站推薦"
+            ]
+          },
+          {
+            "name": "💻 程式",
+            "id": "1574691055461212170",
+            "keywords": [
+              "程式",
+              "code",
+              "coding",
+              "javascript",
+              "typescript",
+              "python",
+              "react",
+              "next.js",
+              "nextjs",
+              "api",
+              "前端",
+              "後端",
+              "rust",
+              "node.js",
+              "vibe coding",
+              "debug",
+              "部署",
+              "vercel",
+              "cloudflare"
+            ]
+          },
+          {
+            "name": "🚀 自製作品",
+            "id": "1574691117453017098",
+            "keywords": [
+              "我做了",
+              "自製",
+              "side project",
+              "我開發",
+              "上線了",
+              "我的作品",
+              "作品集",
+              "做了一個"
+            ]
+          },
+          {
+            "name": "🎮 遊戲開發",
+            "id": "1574691177393946765",
+            "keywords": [
+              "遊戲",
+              "game",
+              "unity",
+              "godot",
+              "unreal",
+              "pixel",
+              "像素",
+              "cat island",
+              "steam"
+            ]
+          }
+        ],
+        "fallback": "1574691280653652140",
+        "max": 5
+      }
     }
   },
   "filter": {
