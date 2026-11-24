@@ -17,8 +17,7 @@
       "label": "部落格",
       "color": "#F26522",
       "feeds": [
-        "https://www.malilion.com/rss.xml",
-        "https://www.malilion.com/rss-en.xml"
+        "https://www.malilion.com/rss.xml"
       ]
     }
   },
