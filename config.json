@@ -189,7 +189,9 @@
       "enabled": true,
       "label": "YouTube",
       "color": "#FF0000",
-      "channels": [],
+      "channels": [
+        "UCEaBadushgCg5nSIFlhEIMg"
+      ],
       "webhookEnv": "DISCORD_YOUTUBE_WEBHOOK_URL",
       "firstRunPostLatest": "all",
       "tags": {
