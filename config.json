@@ -203,7 +203,8 @@
     "maxPostsPerRun": 25,
     "tags": {
       "source": {
-        "threads": "1574605228127289424"
+        "threads": "1574605228127289424",
+        "facebook": "1574688546047000647"
       },
       "rules": [
         {
