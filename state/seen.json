@@ -364,6 +364,27 @@
         "rss:https://www.malilion.com/articles/cloudflare-free-plan-overview"
       ],
       "backfilling": false
+    },
+    "youtube": {
+      "initialized": true,
+      "seen": [
+        "youtube:F5OT2MKSLLg",
+        "youtube:dKygHuqjtfA",
+        "youtube:cIGoCLQ7_Uk",
+        "youtube:2-tW9PlYwTU",
+        "youtube:0JDHKrJ9n2s",
+        "youtube:WA0tRzb3wAU",
+        "youtube:2pq0sLVixWI",
+        "youtube:V_9Qam-0As8",
+        "youtube:ifBZGNFpl9I",
+        "youtube:meY8uQqAdjA",
+        "youtube:du3Cq5Znw0Q",
+        "youtube:7OldDh1SuOc",
+        "youtube:0qVtNwRLcUE",
+        "youtube:UCiZ_jlD2aE",
+        "youtube:dPFeUawzVC4"
+      ],
+      "backfilling": false
     }
   },
   "replies": {
