@@ -133,3 +133,38 @@ test('留言 payload：作者名、圖片、空內容、擋 mention', () => {
   assert.deepEqual(p.allowed_mentions, { parse: [] });
   assert.equal(buildReplyPayload({ username: 'x', text: '', url: 'https://t/1' }).content, '（附件）https://t/1');
 });
+
+import { buildRadarPayload, shouldPostRadar } from '../src/radar.js';
+
+test('科技雷達：每天只發一次，台北 9 點後發；首次設定立刻發', () => {
+  const cfg = { postAfterHour: 9 };
+  const at = (iso) => new Date(iso);
+  assert.equal(shouldPostRadar(cfg, {}, at('2026-11-24T00:00:00Z')), true);                       // 從沒發過
+  assert.equal(shouldPostRadar(cfg, { lastDate: '2026-11-24' }, at('2026-11-24T05:00:00Z')), false); // 今天已發
+  assert.equal(shouldPostRadar(cfg, { lastDate: '2026-11-23' }, at('2026-11-23T23:30:00Z')), false); // 台北 7:30 還太早
+  assert.equal(shouldPostRadar(cfg, { lastDate: '2026-11-23' }, at('2026-11-24T01:10:00Z')), true);  // 台北 9:10
+});
+
+test('科技雷達：分區整理、只放 24 小時內的業界新聞、標題括號不壞連結', () => {
+  const now = new Date('2026-11-24T04:00:00Z');
+  const p = buildRadarPayload({
+    ai: { items: [
+      { title: 'New [model] out', link: 'https://a/1', source: 'OpenAI', score: 2, pubDate: '2026-11-24T02:00:00Z' },
+      { title: 'Old news', link: 'https://a/2', source: 'X', score: 9, pubDate: '2026-11-20T00:00:00Z' },
+    ] },
+    dev: { items: [
+      { title: 'foo/bar', link: 'https://g/1', source: 'GitHub 今日趨勢', type: 'github' },
+      { title: '1.0.0', link: 'https://r/1', source: 'Codex', type: 'releases', pubDate: '2026-11-23T20:00:00Z' },
+    ] },
+    papers: null,
+    events: { items: [{ title: 'Meetup', link: 'https://e/1', start: '2026-11-25T11:30:00Z', source: 'GDG Taipei' }] },
+  }, { baseUrl: 'https://radar/' }, now);
+  const byTitle = Object.fromEntries(p.embeds.filter((e) => e.title).map((e) => [e.title, e.description]));
+  assert.equal(p.thread_name, '📡 科技雷達日報｜11/24（二）');
+  assert.equal(byTitle['🏢 AI 業界動態（24 小時內）'], '• [New ［model］ out](https://a/1) · OpenAI');
+  assert.match(byTitle['🔥 GitHub 今日趨勢'], /foo\/bar/);
+  assert.match(byTitle['🚀 版本更新'], /Codex 1\.0\.0/);
+  assert.match(byTitle['📅 近期社群活動'], /11\/25（三）/);
+  assert.ok(!('📄 Hugging Face 熱門論文' in byTitle)); // 沒資料的區塊不顯示
+  assert.match(p.embeds.at(-1).description, /https:\/\/radar\/newsletter\/latest\.html/);
+});

@@ -369,5 +369,14 @@
       "fallback": "1574605554435756082",
       "max": 5
     }
+  },
+  "radar": {
+    "enabled": true,
+    "baseUrl": "https://malilion.github.io/Malilion-AI-Radar",
+    "webhookEnv": "DISCORD_RADAR_WEBHOOK_URL",
+    "postAfterHour": 9,
+    "itemsPerSection": 6,
+    "username": "科技雷達",
+    "avatarUrl": "https://raw.githubusercontent.com/malilion/discord-bot/main/assets/bot-avatar.png"
   }
 }

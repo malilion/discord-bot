@@ -9,6 +9,7 @@ import { shouldSync } from './filter.js';
 import { buildPayload, buildReplyPayload, postToDiscord } from './discord.js';
 import { loadState, saveState, sourceState, markSeen } from './state.js';
 import { MissingCredentialsError } from './util.js';
+import { fetchRadarData, buildRadarPayload, shouldPostRadar, taipeiNow } from './radar.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const FETCHERS = { threads: fetchThreads, facebook: fetchFacebook, rss: fetchRss };
@@ -119,6 +120,8 @@ async function main() {
     await syncReplies(state, config.sources.threads.replies, webhook, errors);
   }
 
+  if (config.radar?.enabled) await postRadar(state, config.radar, errors);
+
   if (DRY_RUN) {
     console.log(`\n[dry-run] 共 ${batch.length} 篇會被發送，state 未變更`);
   } else {
@@ -128,6 +131,34 @@ async function main() {
   if (errors.length) {
     console.error(`\n有 ${errors.length} 個錯誤：\n${errors.join('\n')}`);
     process.exitCode = 1;
+  }
+}
+
+/** 每天一篇 Malilion AI Radar 日報 */
+async function postRadar(state, cfg, errors) {
+  const hook = process.env[cfg.webhookEnv ?? 'DISCORD_RADAR_WEBHOOK_URL'];
+  if (!hook && !DRY_RUN) {
+    console.log(`– radar: 尚未設定 ${cfg.webhookEnv}，略過`);
+    return;
+  }
+  state.radar ??= {};
+  const force = process.env.RADAR_FORCE === '1';
+  if (!force && !shouldPostRadar(cfg, state.radar)) return;
+  try {
+    if (!DRY_RUN) checkWebhook(cfg.webhookEnv, hook);
+    const data = await fetchRadarData(cfg.baseUrl);
+    const payload = buildRadarPayload(data, cfg);
+    if (DRY_RUN) {
+      console.log(`\n[dry-run] radar\n${JSON.stringify(payload, null, 2)}`);
+      return;
+    }
+    await postToDiscord(hook, payload);
+    state.radar.lastDate = taipeiNow().date;
+    await saveState(STATE_PATH, state);
+    console.log(`✓ 已發送科技雷達日報 ${state.radar.lastDate}`);
+  } catch (err) {
+    errors.push(`[radar] ${err.message}`);
+    console.error(`✗ 科技雷達日報失敗: ${err.message}`);
   }
 }
 
