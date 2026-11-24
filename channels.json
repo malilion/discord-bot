@@ -1,0 +1,38 @@
+{
+  "_說明": "type: text | announcement | forum | voice。readOnly: true 代表一般成員不能發言（Bot 與管理員可以）。syncTarget: true 的頻道會建立同步用 Webhook。",
+  "categories": [
+    {
+      "name": "📌 新手導覽",
+      "channels": [
+        { "name": "📜｜歡迎與規則", "type": "text", "readOnly": true, "topic": "伺服器規則與導覽，進來先看這裡 👀" },
+        { "name": "📣｜公告", "type": "announcement", "readOnly": true, "topic": "重要公告、活動與更新" },
+        { "name": "👋｜自我介紹", "type": "text", "topic": "跟大家打聲招呼！你在做什麼、對什麼有興趣？" }
+      ]
+    },
+    {
+      "name": "📚 資源分享",
+      "channels": [
+        { "name": "📰｜綜合資訊", "type": "text", "readOnly": true, "syncTarget": true, "topic": "自動同步 Threads、Facebook 粉專與部落格的文章、工具與資源。想討論可以直接開討論串 🧵" },
+        { "name": "🛠️｜工具推薦", "type": "forum", "topic": "推薦好用的工具、App、網站，一個工具一個貼文" },
+        { "name": "📖｜好文分享", "type": "forum", "topic": "值得一讀的文章、影片、Podcast" },
+        { "name": "🎓｜學習資源", "type": "text", "topic": "課程、教學、書單、模板" }
+      ]
+    },
+    {
+      "name": "💬 社群交流",
+      "channels": [
+        { "name": "💬｜閒聊", "type": "text", "topic": "什麼都可以聊" },
+        { "name": "❓｜問題求助", "type": "forum", "topic": "卡關了嗎？開一篇貼文問大家，解決後記得標記已解決 ✅" },
+        { "name": "🚀｜作品分享", "type": "text", "topic": "分享你做的東西，互相給回饋" },
+        { "name": "💡｜建議回饋", "type": "text", "topic": "對社群或內容有任何建議都歡迎" }
+      ]
+    },
+    {
+      "name": "🔊 語音",
+      "channels": [
+        { "name": "☕ 聊天室", "type": "voice" },
+        { "name": "📚 共工讀書室", "type": "voice" }
+      ]
+    }
+  ]
+}

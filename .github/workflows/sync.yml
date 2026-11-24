@@ -1,0 +1,43 @@
+name: Sync to Discord
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # 每 30 分鐘（GitHub 排程可能延遲幾分鐘）
+  workflow_dispatch: {} # 也可以在 Actions 頁面手動執行
+
+permissions:
+  contents: write # 需要把 state/seen.json 推回 repo 才能記住已發過的貼文
+
+concurrency:
+  group: discord-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Sync posts
+        run: node src/index.js
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+
+      - name: Save state
+        if: always()
+        run: |
+          if [[ -n "$(git status --porcelain state/)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add state/
+            git commit -m "chore: update sync state [skip ci]"
+            git push
+          fi

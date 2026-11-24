@@ -1,0 +1,40 @@
+{
+  "sources": {
+    "threads": {
+      "enabled": true,
+      "label": "Threads",
+      "color": "#000000"
+    },
+    "facebook": {
+      "enabled": true,
+      "label": "Facebook 粉專",
+      "color": "#1877F2",
+      "graphApiVersion": "v23.0"
+    },
+    "rss": {
+      "enabled": true,
+      "label": "部落格",
+      "color": "#F26522",
+      "feeds": [
+        "https://example.com/feed"
+      ]
+    }
+  },
+
+  "filter": {
+    "requireLink": false,
+    "includeKeywords": [],
+    "excludeKeywords": ["#不同步"]
+  },
+
+  "firstRun": {
+    "postLatest": 3
+  },
+
+  "discord": {
+    "username": "資源小幫手",
+    "avatarUrl": "",
+    "forumChannel": false,
+    "maxPostsPerRun": 10
+  }
+}
