@@ -1,16 +1,19 @@
 {
   "sources": {
     "threads": {
-      "initialized": false,
-      "seen": []
+      "initialized": true,
+      "seen": [],
+      "backfilling": true
     },
     "facebook": {
       "initialized": false,
-      "seen": []
+      "seen": [],
+      "backfilling": false
     },
     "rss": {
       "initialized": false,
-      "seen": []
+      "seen": [],
+      "backfilling": false
     }
   }
 }
