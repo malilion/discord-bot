@@ -1,7 +1,8 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 
-const KEEP_PER_SOURCE = 500;
+// 搬舊文時會抓完整歷史，已發清單要夠大，避免舊 ID 被擠掉而重發
+const KEEP_PER_SOURCE = 5000;
 
 export async function loadState(path) {
   try {

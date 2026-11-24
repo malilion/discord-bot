@@ -37,7 +37,9 @@ async function main() {
     const src = sourceState(state, name);
     let items;
     try {
-      items = await FETCHERS[name](cfg, process.env);
+      // 首次執行或舊文還沒搬完時，抓完整歷史；平常只抓最新一頁
+      const fetchAll = !src.initialized || src.backfilling;
+      items = await FETCHERS[name](cfg, process.env, { fetchAll });
     } catch (err) {
       if (err instanceof MissingCredentialsError) {
         console.log(`– ${name}: ${err.message}，略過`);
@@ -54,13 +56,14 @@ async function main() {
     for (const it of fresh) if (!wanted.includes(it)) markSeen(src, it.id);
 
     if (!src.initialized) {
-      // 第一次執行：只發最新 N 篇，其餘標記已讀，避免洗版
-      const n = config.firstRun?.postLatest ?? 3;
-      const keep = n > 0 ? wanted.slice(-n) : [];
+      // 第一次執行：預設只發最新 N 篇，其餘標記已讀，避免洗版
+      // 來源設定 firstRunPostLatest: "all" 則搬全部舊文（由舊到新，分批發）
+      const n = cfg.firstRunPostLatest ?? config.firstRun?.postLatest ?? 3;
+      const keep = n === 'all' ? wanted : n > 0 ? wanted.slice(-n) : [];
       for (const it of wanted) if (!keep.includes(it)) markSeen(src, it.id);
       queue.push(...keep);
       src.initialized = true;
-      console.log(`• ${name}: 首次執行，抓到 ${items.length} 篇，發最新 ${keep.length} 篇`);
+      console.log(`• ${name}: 首次執行，抓到 ${items.length} 篇，要發 ${keep.length} 篇`);
     } else {
       queue.push(...wanted);
       console.log(`• ${name}: 抓到 ${items.length} 篇，新貼文 ${wanted.length} 篇`);
@@ -71,6 +74,11 @@ async function main() {
   const max = config.discord?.maxPostsPerRun ?? 10;
   const batch = queue.slice(0, max);
   if (queue.length > max) console.log(`• 本次只發 ${max} 篇，剩下 ${queue.length - max} 篇下次再發`);
+  // 還有沒發完的來源，下次繼續抓完整歷史
+  for (const name of Object.keys(config.sources)) {
+    if (!state.sources?.[name]) continue;
+    state.sources[name].backfilling = queue.slice(max).some((it) => it.source === name);
+  }
 
   for (const item of batch) {
     const payload = buildPayload(item, config.sources[item.source], config.discord);

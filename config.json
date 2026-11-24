@@ -3,7 +3,8 @@
     "threads": {
       "enabled": true,
       "label": "Threads",
-      "color": "#000000"
+      "color": "#000000",
+      "firstRunPostLatest": "all"
     },
     "facebook": {
       "enabled": true,
@@ -20,21 +21,20 @@
       ]
     }
   },
-
   "filter": {
     "requireLink": false,
     "includeKeywords": [],
-    "excludeKeywords": ["#不同步"]
+    "excludeKeywords": [
+      "#不同步"
+    ]
   },
-
   "firstRun": {
     "postLatest": 3
   },
-
   "discord": {
     "username": "資源小幫手",
     "avatarUrl": "",
     "forumChannel": false,
-    "maxPostsPerRun": 10
+    "maxPostsPerRun": 25
   }
 }

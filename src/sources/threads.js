@@ -5,13 +5,19 @@ import { fetchJson, MissingCredentialsError } from '../util.js';
  * 需要環境變數 THREADS_ACCESS_TOKEN（長效 token，60 天到期，可用 refresh 延長）
  * 文件：https://developers.facebook.com/docs/threads/threads-media
  */
-export async function fetchThreads(cfg, env) {
+export async function fetchThreads(cfg, env, { fetchAll = false } = {}) {
   const token = env.THREADS_ACCESS_TOKEN;
   if (!token) throw new MissingCredentialsError('尚未設定 THREADS_ACCESS_TOKEN');
 
   const fields = 'id,media_type,media_url,thumbnail_url,permalink,text,timestamp,username,is_quote_post';
-  const url = `https://graph.threads.net/v1.0/me/threads?fields=${fields}&limit=25&access_token=${encodeURIComponent(token)}`;
-  const { data = [] } = await fetchJson(url);
+  let url = `https://graph.threads.net/v1.0/me/threads?fields=${fields}&limit=${fetchAll ? 100 : 25}&access_token=${encodeURIComponent(token)}`;
+  const data = [];
+  // fetchAll：沿著 paging.next 抓完整歷史（最多 50 頁 = 5000 篇）
+  for (let page = 0; url && page < (fetchAll ? 50 : 1); page++) {
+    const res = await fetchJson(url);
+    data.push(...(res.data ?? []));
+    url = res.paging?.next;
+  }
 
   return data
     // REPOST_FACADE 是轉發別人的貼文，不同步
