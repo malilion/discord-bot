@@ -617,5 +617,8 @@
       "seen": [],
       "done": true
     }
+  },
+  "radar": {
+    "lastDate": "2026-11-24"
   }
 }
