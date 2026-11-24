@@ -24,7 +24,162 @@
       "color": "#F26522",
       "feeds": [
         "https://www.malilion.com/rss.xml"
-      ]
+      ],
+      "webhookEnv": "DISCORD_BLOG_WEBHOOK_URL",
+      "firstRunPostLatest": "all",
+      "tags": {
+        "source": {},
+        "rules": [
+          {
+            "name": "🤖 AI 新知",
+            "id": "1574613143731183767",
+            "keywords": [
+              "ai",
+              "gpt",
+              "chatgpt",
+              "claude",
+              "gemini",
+              "llm",
+              "openai",
+              "anthropic",
+              "agent",
+              "copilot",
+              "cursor",
+              "midjourney",
+              "prompt",
+              "生成式",
+              "大模型",
+              "模型",
+              "人工智慧"
+            ]
+          },
+          {
+            "name": "🛠 工具",
+            "id": "1574613263952519269",
+            "keywords": [
+              "工具",
+              "tool",
+              "tools",
+              "app",
+              "extension",
+              "外掛",
+              "插件",
+              "chrome",
+              "vscode",
+              "raycast",
+              "notion",
+              "免費",
+              "懶人包",
+              "網站推薦"
+            ]
+          },
+          {
+            "name": "🎨 UI 設計資源",
+            "id": "1574613319984349234",
+            "keywords": [
+              "ui",
+              "ux",
+              "設計",
+              "figma",
+              "design",
+              "icon",
+              "icons",
+              "圖示",
+              "字體",
+              "font",
+              "配色",
+              "tailwind",
+              "css",
+              "動畫",
+              "animation",
+              "元件",
+              "component"
+            ]
+          },
+          {
+            "name": "📦 開源專案",
+            "id": "1574613329329135656",
+            "keywords": [
+              "github",
+              "開源",
+              "open source",
+              "open-source",
+              "opensource",
+              "repo",
+              "star"
+            ]
+          },
+          {
+            "name": "💻 程式",
+            "id": "1574613338954928180",
+            "keywords": [
+              "程式",
+              "code",
+              "coding",
+              "javascript",
+              "typescript",
+              "python",
+              "react",
+              "next.js",
+              "nextjs",
+              "api",
+              "前端",
+              "後端",
+              "rust",
+              "node.js",
+              "vibe coding",
+              "debug",
+              "部署",
+              "vercel",
+              "cloudflare"
+            ]
+          },
+          {
+            "name": "🎮 遊戲開發",
+            "id": "1574613514847523006",
+            "keywords": [
+              "遊戲",
+              "game",
+              "unity",
+              "godot",
+              "unreal",
+              "pixel",
+              "像素",
+              "cat island",
+              "steam"
+            ]
+          },
+          {
+            "name": "🚀 自製作品",
+            "id": "1574613553061699644",
+            "keywords": [
+              "我做了",
+              "自製",
+              "side project",
+              "我開發",
+              "上線了",
+              "我的作品",
+              "作品集",
+              "做了一個"
+            ]
+          },
+          {
+            "name": "💡 觀點心得",
+            "id": "1574613591506555001",
+            "keywords": [
+              "心得",
+              "觀點",
+              "想法",
+              "反思",
+              "經驗",
+              "分享一下",
+              "我覺得"
+            ]
+          }
+        ],
+        "fallback": "1574613591506555001",
+        "max": 5
+      }
     }
   },
   "filter": {

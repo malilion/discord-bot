@@ -347,23 +347,6 @@
       "initialized": false,
       "seen": [],
       "backfilling": false
-    },
-    "rss": {
-      "initialized": true,
-      "seen": [
-        "rss:https://www.malilion.com/articles/hello-malilion",
-        "rss:https://www.malilion.com/articles/malilion-toolbox",
-        "rss:https://www.malilion.com/articles/meta-muse-taiwan-early-access",
-        "rss:https://www.malilion.com/articles/meta-muse-trial-report",
-        "rss:https://www.malilion.com/articles/git-commands-basics",
-        "rss:https://www.malilion.com/articles/git-commands-history-branch",
-        "rss:https://www.malilion.com/articles/git-commands-remote-rescue",
-        "rss:https://www.malilion.com/articles/software-testing-guide",
-        "rss:https://www.malilion.com/articles/cloudflare-free-plan-edge",
-        "rss:https://www.malilion.com/articles/meta-muse-developer-report",
-        "rss:https://www.malilion.com/articles/cloudflare-free-plan-overview"
-      ],
-      "backfilling": false
     }
   },
   "replies": {

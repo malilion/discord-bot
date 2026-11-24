@@ -28,18 +28,21 @@ async function main() {
     console.log('– 尚未設定 DISCORD_WEBHOOK_URL，本次不執行同步');
     return;
   }
-  if (!DRY_RUN && !/^https:\/\/(?:ptb\.|canary\.)?discord(?:app)?\.com\/api\/webhooks\/\d+\/[\w-]+/.test(webhook.trim())) {
-    // 只印出網址的開頭，避免把密碼外洩到 log
-    let hint = '無法解析的字串';
-    try { const u = new URL(webhook.trim()); hint = `${u.host}/${u.pathname.split('/')[1] ?? ''}/…`; } catch {}
-    throw new Error(`DISCORD_WEBHOOK_URL 不是 Webhook 網址（目前是 ${hint}）。請到頻道設定 → 整合 → Webhook →「複製 Webhook 網址」後重新設定`);
-  }
+  if (!DRY_RUN) checkWebhook('DISCORD_WEBHOOK_URL', webhook);
 
   const queue = [];
   const errors = [];
 
   for (const [name, cfg] of Object.entries(config.sources)) {
     if (!cfg.enabled) continue;
+    // 來源可以指定自己的 webhook（例如部落格發到另一個論壇）；還沒設定就先略過，不要發錯地方
+    if (cfg.webhookEnv && !DRY_RUN) {
+      if (!process.env[cfg.webhookEnv]) {
+        console.log(`– ${name}: 尚未設定 ${cfg.webhookEnv}，略過`);
+        continue;
+      }
+      checkWebhook(cfg.webhookEnv, process.env[cfg.webhookEnv]);
+    }
     const src = sourceState(state, name);
     let items;
     try {
@@ -87,13 +90,17 @@ async function main() {
   }
 
   for (const item of batch) {
-    const payload = buildPayload(item, config.sources[item.source], config.discord);
+    const sourceCfg = config.sources[item.source];
+    // 來源可覆寫標籤（不同論壇的標籤 ID 不同）
+    const discordCfg = sourceCfg.tags ? { ...config.discord, tags: sourceCfg.tags } : config.discord;
+    const payload = buildPayload(item, sourceCfg, discordCfg);
+    const target = (sourceCfg.webhookEnv && process.env[sourceCfg.webhookEnv]) || webhook;
     if (DRY_RUN) {
       console.log(`\n[dry-run] ${item.id}\n${JSON.stringify(payload, null, 2)}`);
       continue;
     }
     try {
-      const msg = await postToDiscord(webhook, payload);
+      const msg = await postToDiscord(target, payload);
       markSeen(sourceState(state, item.source), item.id);
       // 論壇貼文的 channel_id 就是這篇的討論串，之後留言放進去
       if (item.source === 'threads' && config.discord?.forumChannel && msg?.channel_id) {
@@ -122,6 +129,14 @@ async function main() {
     console.error(`\n有 ${errors.length} 個錯誤：\n${errors.join('\n')}`);
     process.exitCode = 1;
   }
+}
+
+/** 確認是 Discord Webhook 網址；只印出網址開頭，避免把密碼外洩到 log */
+function checkWebhook(name, value) {
+  if (/^https:\/\/(?:ptb\.|canary\.)?discord(?:app)?\.com\/api\/webhooks\/\d+\/[\w-]+/.test(value.trim())) return;
+  let hint = '無法解析的字串';
+  try { const u = new URL(value.trim()); hint = `${u.host}/${u.pathname.split('/')[1] ?? ''}/…`; } catch {}
+  throw new Error(`${name} 不是 Webhook 網址（目前是 ${hint}）。請到頻道設定 → 整合 → Webhook →「複製 Webhook 網址」後重新設定`);
 }
 
 /**
