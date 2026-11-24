@@ -625,7 +625,10 @@
       "official": "2026-11-24",
       "tools": "2026-11-24",
       "releases": "2026-11-24",
-      "events": "2026-11-24"
+      "events": "2026-11-24",
+      "papers": "2026-11-24",
+      "tutorials": "2026-11-24",
+      "research": "2026-11-24"
     },
     "seen": {
       "news": [
@@ -680,6 +683,38 @@
       "events": [
         "https://gdg.community.dev/events/details/google-gdg-taipei-presents-flutter-meetup-40/",
         "https://gdg.community.dev/events/details/google-gdg-taipei-presents-devfest-taipei-2026/"
+      ],
+      "papers": [
+        "https://huggingface.co/papers/2604.05018",
+        "https://huggingface.co/papers/2606.23050",
+        "https://huggingface.co/papers/2611.26603",
+        "https://huggingface.co/papers/2611.18397",
+        "https://huggingface.co/papers/2610.14224",
+        "https://huggingface.co/papers/2412.20138"
+      ],
+      "tutorials": [
+        "https://community.openai.com/t/a-universal-model-that-isnt-allowed-to-be-universal/1419840",
+        "https://community.openai.com/t/chatgpt-desktop-macos-chat-mode-cannot-access-built-in-browser-tabs-while-work-and-codex-work/1419838",
+        "https://community.openai.com/t/sugestao-de-melhoria-para-o-chatgpt-leitura-automatica-das-respostas-na-conversa-escrita/1419837",
+        "https://community.openai.com/t/feature-request-context-preserving-quick-search-and-floating-ask-chatgpt-window/1419834",
+        "https://community.openai.com/t/smart-speaker-kubebrik-one1/1419832",
+        "https://community.openai.com/t/from-artificial-intelligence-to-humanity/1419828",
+        "https://community.openai.com/t/feature-request-turn-chatgpt-projects-into-persistent-ai-workspaces-chats-sources-outputs/1419826",
+        "https://community.openai.com/t/anyone-else-seeing-gpt-5-6-sol-switch-to-gpt-6-in-new-chats/1419824",
+        "https://dev.to/hacksgr/researchers-spot-fake-ads-for-codex-claude-code-and-homebrew-in-google-ads-2j1c",
+        "https://dev.to/icegaming/claude-code-is-great-it-also-forgets-everything-3hd8"
+      ],
+      "research": [
+        "https://research.google/blog/supercharging-transformer-residual-connections/",
+        "https://research.google/blog/how-google-duplex-evolved-to-also-call-businesses-for-you-in-gemini/",
+        "https://machinelearning.apple.com/research/depth-pro-2-monocular",
+        "https://research.google/blog/a-game-you-cannot-win-unless-you-have-a-quantum-computer/",
+        "https://www.lesswrong.com/posts/MSk9tqAmrmeasFgAZ/human-military-relevance-is-more-important-than-economic",
+        "https://www.lesswrong.com/posts/9EJJrKiYEAmaP2TcL/rats-just-wanna-have-fun",
+        "https://www.lesswrong.com/posts/FXGukrjX3bWCi7ycR/moderately-cursed-questions-of-ai-safety",
+        "https://www.lesswrong.com/posts/uK7buQSGjSrbyFw5k/the-disappointment-of-a-satisfying-explanation",
+        "https://www.lesswrong.com/posts/3znHBDGQWBjhWEKcQ/obstacles-to-mindreading-simple-irreducible-and-instrumental",
+        "https://eugeneyan.com/writing/public-evals"
       ]
     }
   }
