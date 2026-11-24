@@ -39,5 +39,9 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add state/
             git commit -m "chore: update sync state [skip ci]"
-            git push
+            # 其他 commit 同時推上來時，先合併再推，避免已發紀錄遺失而重發
+            for i in 1 2 3 4 5; do
+              git pull --rebase -X theirs && git push && break
+              sleep $((i * 3))
+            done
           fi
