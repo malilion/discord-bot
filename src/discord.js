@@ -1,4 +1,5 @@
 import { firstUrl, hexToInt, sleep, splitTitle, truncate } from './util.js';
+import { pickTags } from './tags.js';
 
 const SOURCE_EMOJI = { threads: '🧵', facebook: '📘', rss: '📝' };
 
@@ -34,14 +35,33 @@ export function buildPayload(item, sourceCfg = {}, discordCfg = {}) {
     embeds: [embed],
     allowed_mentions: { parse: [] }, // 不要讓貼文裡的 @everyone 真的 tag 到人
   };
-  // 論壇頻道：每篇開一個討論串，方便搜尋與留言
-  if (discordCfg.forumChannel) payload.thread_name = truncate(title, 100);
+  // 論壇頻道：每篇是一個貼文（討論串），帶上分類標籤，方便篩選與留言
+  if (discordCfg.forumChannel) {
+    payload.thread_name = truncate(title, 100);
+    const tags = pickTags(item, discordCfg.tags);
+    if (tags.length) payload.applied_tags = tags;
+  }
   return payload;
 }
 
-export async function postToDiscord(webhookUrl, payload, { retries = 3 } = {}) {
+/** 把一則 Threads 留言轉成論壇貼文裡的一則訊息 */
+export function buildReplyPayload(reply) {
+  const name = reply.username ? `@${reply.username}` : 'Threads 留言';
+  let content = reply.text?.trim() || '';
+  if (reply.image) content += `${content ? '\n' : ''}${reply.image}`;
+  if (!content) content = reply.url ? `（附件）${reply.url}` : '（沒有文字內容）';
+  return {
+    // webhook 名稱不能含 "discord"，也限 80 字
+    username: truncate(`${name} · Threads`.replace(/discord/gi, 'd1scord'), 80),
+    content: truncate(content, 2000),
+    allowed_mentions: { parse: [] },
+  };
+}
+
+export async function postToDiscord(webhookUrl, payload, { retries = 3, threadId } = {}) {
   const url = new URL(webhookUrl);
   url.searchParams.set('wait', 'true');
+  if (threadId) url.searchParams.set('thread_id', threadId);
 
   for (let attempt = 0; ; attempt++) {
     const res = await fetch(url, {

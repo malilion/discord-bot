@@ -35,6 +35,32 @@ export async function fetchThreads(cfg, env, { fetchAll = false } = {}) {
     }));
 }
 
+/**
+ * 抓一篇貼文底下的所有留言（含巢狀回覆），由舊到新
+ * 需要 token 具備 threads_read_replies 權限
+ */
+export async function fetchThreadReplies(postId, env, { limit = 100 } = {}) {
+  const token = env.THREADS_ACCESS_TOKEN;
+  if (!token) throw new MissingCredentialsError('尚未設定 THREADS_ACCESS_TOKEN');
+  const rawId = String(postId).replace(/^threads:/, '');
+  const fields = 'id,text,username,permalink,timestamp,media_type,media_url,thumbnail_url';
+  let url = `https://graph.threads.net/v1.0/${encodeURIComponent(rawId)}/conversation?fields=${fields}&reverse=false&limit=50&access_token=${encodeURIComponent(token)}`;
+  const replies = [];
+  while (url && replies.length < limit) {
+    const res = await fetchJson(url);
+    replies.push(...(res.data ?? []));
+    url = res.paging?.next;
+  }
+  return replies.slice(0, limit).map((r) => ({
+    id: r.id,
+    username: r.username,
+    text: r.text ?? '',
+    url: r.permalink,
+    image: r.media_type === 'IMAGE' ? r.media_url : r.media_type === 'VIDEO' ? r.thumbnail_url : undefined,
+    publishedAt: r.timestamp,
+  })).sort((a, b) => (Date.parse(a.publishedAt) || 0) - (Date.parse(b.publishedAt) || 0));
+}
+
 /** 延長長效 token 的效期（回傳新的 token，需手動更新到 GitHub Secret） */
 export async function refreshThreadsToken(token) {
   const url = `https://graph.threads.net/refresh_access_token?grant_type=th_refresh_token&access_token=${encodeURIComponent(token)}`;

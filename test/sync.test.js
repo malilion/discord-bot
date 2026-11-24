@@ -104,3 +104,32 @@ test('過濾規則', () => {
   assert.equal(shouldSync({ ...base, text: 'see https://x.org' }, { requireLink: true }), true);
   assert.equal(shouldSync({ source: 'rss', text: '' }, { requireLink: true }), true);
 });
+
+import { pickTags } from '../src/tags.js';
+import { buildReplyPayload } from '../src/discord.js';
+
+test('自動標籤：來源 + 關鍵字分類，英文用字邊界，沒命中走 fallback，最多 5 個', () => {
+  const cfg = {
+    source: { threads: 'S' },
+    rules: [
+      { id: 'AI', keywords: ['ai', 'claude'] },
+      { id: 'UI', keywords: ['設計', 'figma'] },
+      { id: 'OSS', keywords: ['github'] },
+      { id: 'CODE', keywords: ['react'] },
+      { id: 'GAME', keywords: ['遊戲'] },
+    ],
+    fallback: 'MISC',
+  };
+  assert.deepEqual(pickTags({ source: 'threads', text: '用 Claude 做 Figma 設計' }, cfg), ['S', 'AI', 'UI']);
+  assert.deepEqual(pickTags({ source: 'threads', text: '寄 email 給你' }, cfg), ['S', 'MISC']); // email 不算 ai
+  assert.deepEqual(pickTags({ source: 'threads', text: 'AI 設計 github react 遊戲' }, cfg), ['S', 'AI', 'UI', 'OSS', 'CODE']);
+  assert.deepEqual(pickTags({ source: 'rss', text: 'x' }, undefined), []);
+});
+
+test('留言 payload：作者名、圖片、空內容、擋 mention', () => {
+  const p = buildReplyPayload({ username: 'amy', text: '好文 @everyone', image: 'https://i/1.jpg' });
+  assert.equal(p.username, '@amy · Threads');
+  assert.equal(p.content, '好文 @everyone\nhttps://i/1.jpg');
+  assert.deepEqual(p.allowed_mentions, { parse: [] });
+  assert.equal(buildReplyPayload({ username: 'x', text: '', url: 'https://t/1' }).content, '（附件）https://t/1');
+});

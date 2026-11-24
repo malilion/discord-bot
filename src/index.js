@@ -2,11 +2,11 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-import { fetchThreads } from './sources/threads.js';
+import { fetchThreads, fetchThreadReplies } from './sources/threads.js';
 import { fetchFacebook } from './sources/facebook.js';
 import { fetchRss } from './sources/rss.js';
 import { shouldSync } from './filter.js';
-import { buildPayload, postToDiscord } from './discord.js';
+import { buildPayload, buildReplyPayload, postToDiscord } from './discord.js';
 import { loadState, saveState, sourceState, markSeen } from './state.js';
 import { MissingCredentialsError } from './util.js';
 
@@ -93,14 +93,23 @@ async function main() {
       continue;
     }
     try {
-      await postToDiscord(webhook, payload);
+      const msg = await postToDiscord(webhook, payload);
       markSeen(sourceState(state, item.source), item.id);
+      // 論壇貼文的 channel_id 就是這篇的討論串，之後留言放進去
+      if (item.source === 'threads' && config.discord?.forumChannel && msg?.channel_id) {
+        state.replies ??= {};
+        state.replies[item.id] = { threadId: msg.channel_id, publishedAt: item.publishedAt, seen: [], done: false };
+      }
       await saveState(STATE_PATH, state); // 每發一篇就存，中途失敗也不會重發
       console.log(`✓ 已發送 ${item.id}`);
     } catch (err) {
       errors.push(`[discord] ${item.id}: ${err.message}`);
       console.error(`✗ 發送失敗 ${item.id}: ${err.message}`);
     }
+  }
+
+  if (!DRY_RUN && config.sources.threads?.replies?.enabled && config.discord?.forumChannel) {
+    await syncReplies(state, config.sources.threads.replies, webhook, errors);
   }
 
   if (DRY_RUN) {
@@ -113,6 +122,64 @@ async function main() {
     console.error(`\n有 ${errors.length} 個錯誤：\n${errors.join('\n')}`);
     process.exitCode = 1;
   }
+}
+
+/**
+ * 把 Threads 留言搬進對應的論壇貼文
+ * - 剛搬的貼文：一次補齊所有留言
+ * - 最近 followDays 天內的貼文：每次檢查有沒有新留言
+ */
+async function syncReplies(state, cfg, webhook, errors) {
+  const entries = Object.entries(state.replies ?? {});
+  if (!entries.length) return;
+  const followMs = (cfg.followDays ?? 14) * 86400_000;
+  const maxPerRun = cfg.maxPerRun ?? 300;
+  const now = Date.now();
+  let posted = 0;
+
+  for (const [postId, entry] of entries) {
+    if (posted >= maxPerRun) break;
+    const recent = now - (Date.parse(entry.publishedAt) || 0) < followMs;
+    if (entry.done && !recent) continue;
+
+    let replies;
+    try {
+      replies = await fetchThreadReplies(postId, process.env, { limit: cfg.maxPerPost ?? 100 });
+    } catch (err) {
+      if (/HTTP (400|403)/.test(err.message) && /permission|OAuth|scope/i.test(err.message)) {
+        console.log('! Threads token 沒有讀取留言的權限（threads_read_replies），本次略過留言');
+        return;
+      }
+      errors.push(`[replies] ${postId}: ${err.message}`);
+      console.error(`✗ 抓留言失敗 ${postId}: ${err.message}`);
+      continue;
+    }
+
+    const fresh = replies.filter((r) => !entry.seen.includes(r.id));
+    let ok = true;
+    for (const reply of fresh) {
+      if (posted >= maxPerRun) { ok = false; break; }
+      try {
+        await postToDiscord(webhook, buildReplyPayload(reply), { threadId: entry.threadId });
+        entry.seen.push(reply.id);
+        posted++;
+      } catch (err) {
+        ok = false;
+        errors.push(`[replies] ${postId}/${reply.id}: ${err.message}`);
+        console.error(`✗ 留言發送失敗 ${reply.id}: ${err.message}`);
+        break;
+      }
+    }
+    entry.done = ok;
+    await saveState(STATE_PATH, state);
+    if (fresh.length) console.log(`💬 ${postId}: 搬了 ${fresh.length} 則留言`);
+  }
+
+  // 太舊而且已經補齊的貼文不再追蹤，讓 state 保持精簡
+  for (const [postId, entry] of Object.entries(state.replies)) {
+    if (entry.done && now - (Date.parse(entry.publishedAt) || 0) >= followMs) delete state.replies[postId];
+  }
+  if (posted) console.log(`• 本次共搬了 ${posted} 則留言`);
 }
 
 main().catch((err) => {

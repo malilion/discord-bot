@@ -4,7 +4,13 @@
       "enabled": true,
       "label": "Threads",
       "color": "#000000",
-      "firstRunPostLatest": "all"
+      "firstRunPostLatest": "all",
+      "replies": {
+        "enabled": true,
+        "followDays": 14,
+        "maxPerPost": 100,
+        "maxPerRun": 300
+      }
     },
     "facebook": {
       "enabled": true,
@@ -34,7 +40,179 @@
   "discord": {
     "username": "資源小幫手",
     "avatarUrl": "https://raw.githubusercontent.com/malilion/discord-bot/main/assets/bot-avatar.png",
-    "forumChannel": false,
-    "maxPostsPerRun": 25
+    "forumChannel": true,
+    "maxPostsPerRun": 25,
+    "tags": {
+      "source": {
+        "threads": "1574605228127289424",
+        "rss": "1574605380141711370"
+      },
+      "rules": [
+        {
+          "name": "🤖 AI 新知",
+          "id": "1574605399099965532",
+          "keywords": [
+            "ai",
+            "gpt",
+            "chatgpt",
+            "claude",
+            "gemini",
+            "llm",
+            "openai",
+            "anthropic",
+            "agent",
+            "copilot",
+            "cursor",
+            "midjourney",
+            "prompt",
+            "生成式",
+            "大模型",
+            "模型",
+            "人工智慧"
+          ]
+        },
+        {
+          "name": "🛠 工具",
+          "id": "1574605392372178984",
+          "keywords": [
+            "工具",
+            "tool",
+            "tools",
+            "app",
+            "extension",
+            "外掛",
+            "插件",
+            "chrome",
+            "vscode",
+            "raycast",
+            "notion",
+            "免費",
+            "懶人包",
+            "網站推薦"
+          ]
+        },
+        {
+          "name": "🎨 UI 設計資源",
+          "id": "1574605463058645032",
+          "keywords": [
+            "ui",
+            "ux",
+            "設計",
+            "figma",
+            "design",
+            "icon",
+            "icons",
+            "圖示",
+            "字體",
+            "font",
+            "配色",
+            "tailwind",
+            "css",
+            "動畫",
+            "animation",
+            "元件",
+            "component"
+          ]
+        },
+        {
+          "name": "📦 開源專案",
+          "id": "1574605472579850250",
+          "keywords": [
+            "github",
+            "開源",
+            "open source",
+            "open-source",
+            "opensource",
+            "repo",
+            "star"
+          ]
+        },
+        {
+          "name": "💻 程式",
+          "id": "1574605482243653742",
+          "keywords": [
+            "程式",
+            "code",
+            "coding",
+            "javascript",
+            "typescript",
+            "python",
+            "react",
+            "next.js",
+            "nextjs",
+            "api",
+            "前端",
+            "後端",
+            "rust",
+            "node.js",
+            "vibe coding",
+            "debug",
+            "部署",
+            "vercel",
+            "cloudflare"
+          ]
+        },
+        {
+          "name": "🎮 遊戲開發",
+          "id": "1574605491806666843",
+          "keywords": [
+            "遊戲",
+            "game",
+            "unity",
+            "godot",
+            "unreal",
+            "pixel",
+            "像素",
+            "cat island",
+            "steam"
+          ]
+        },
+        {
+          "name": "🚀 自製作品",
+          "id": "1574605544763826378",
+          "keywords": [
+            "我做了",
+            "自製",
+            "side project",
+            "我開發",
+            "上線了",
+            "我的作品",
+            "作品集",
+            "做了一個"
+          ]
+        },
+        {
+          "name": "📅 活動聚會",
+          "id": "1574605564036653087",
+          "keywords": [
+            "活動",
+            "聚會",
+            "meetup",
+            "報名",
+            "講座",
+            "workshop",
+            "conference",
+            "hackathon",
+            "黑客松",
+            "直播"
+          ]
+        },
+        {
+          "name": "💡 觀點心得",
+          "id": "1574605554435756082",
+          "keywords": [
+            "心得",
+            "觀點",
+            "想法",
+            "反思",
+            "經驗",
+            "分享一下",
+            "我覺得"
+          ]
+        }
+      ],
+      "fallback": "1574605554435756082",
+      "max": 5
+    }
   }
 }
