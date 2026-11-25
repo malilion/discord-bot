@@ -642,14 +642,14 @@
   "radar": {
     "lastDate": "2026-11-24",
     "posted": {
-      "news": "2026-11-24",
-      "official": "2026-11-24",
-      "tools": "2026-11-24",
-      "releases": "2026-11-24",
-      "events": "2026-11-24",
-      "papers": "2026-11-24",
-      "tutorials": "2026-11-24",
-      "research": "2026-11-24"
+      "news": "2026-11-25",
+      "official": "2026-11-25",
+      "tools": "2026-11-25",
+      "releases": "2026-11-25",
+      "events": "2026-11-25",
+      "papers": "2026-11-25",
+      "tutorials": "2026-11-25",
+      "research": "2026-11-25"
     },
     "seen": {
       "news": [
@@ -666,7 +666,21 @@
         "https://ladybird.org/posts/alpha/",
         "https://z.ai/blog/glm-5.4",
         "https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF",
-        "https://blog.kagi.com/kagi-mail-public-beta"
+        "https://blog.kagi.com/kagi-mail-public-beta",
+        "https://www.theverge.com/entertainment/1041362/tidal-ai-music-ban",
+        "https://techcrunch.com/2026/11/24/meta-brings-its-muse-ai-assistant-directly-into-instagram-dms/",
+        "https://www.cnbc.com/2026/11/24/anthropic-stock-ipo-price.html",
+        "https://techcrunch.com/2026/11/24/tidal-to-ban-and-remove-millions-of-ai-generated-tracks-as-ai-slop-inundates-music-streaming/",
+        "https://www.cnbc.com/2026/11/24/jensen-huang-nvidia-congress-gtc.html",
+        "https://www.cnbc.com/2026/11/24/nvidia-stock-jensen-huang-return.html",
+        "https://www.theverge.com/tech/1041222/jensen-huang-nvidia-scandal-deepfakes",
+        "https://techcrunch.com/2026/11/24/why-a-crusoe-investor-is-betting-on-solar-and-batteries-to-power-future-ai-data-centers/",
+        "https://www.greynoise.io/blog/check-point-security-management-servers-intrusion-campaign",
+        "https://hypercritical.co/2026/11/23/jetty-pro",
+        "https://fzakaria.com/2026/11/23/2035-came-early",
+        "https://mechanical-pencil.com/products/spray-bottle",
+        "https://www.frankchiarulli.com/blog/splitting-usb-c/",
+        "https://jobs.ashbyhq.com/weave-os"
       ],
       "official": [
         "https://huggingface.co/blog/allenai/robotrack",
@@ -676,7 +690,12 @@
         "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
         "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards",
         "https://claude.com/resources/articles/kpmg-todd-lohr-on-ai-when-your-data-is-also-your-clients-data",
-        "https://huggingface.co/blog/agentic-evals"
+        "https://huggingface.co/blog/agentic-evals",
+        "https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance",
+        "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/",
+        "https://openai.com/index/introducing-shirudo",
+        "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+        "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/"
       ],
       "tools": [
         "https://github.com/elementalsouls/Claude-BugHunter",
@@ -691,7 +710,20 @@
         "https://whistlestop.guide",
         "https://play.neilkakkar.com/finish-the-line/",
         "https://certyneo.com/en/tools/lecteur-pdf",
-        "https://office.puter.com/"
+        "https://office.puter.com/",
+        "https://github.com/cathrynlavery/diagram-design",
+        "https://github.com/mvanhorn/last30days-skill",
+        "https://github.com/backnotprop/plannotator",
+        "https://github.com/google-labs-code/stitch-skills",
+        "https://github.com/GoogleChrome/modern-web-guidance-src",
+        "https://github.com/alibaba/open-code-review",
+        "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "https://github.com/tradermonty/claude-trading-skills",
+        "https://github.com/dieron/mygraph",
+        "https://github.com/joonfjp/yoltapp",
+        "https://github.com/EdonZo/sidemoon",
+        "https://github.com/AryabhattaLabs/agent-tool-result-reducer",
+        "https://masondata.ai/"
       ],
       "releases": [
         "https://github.com/langchain-ai/langchain/releases/tag/langchain-qdrant%3D%3D1.2.0",
@@ -699,7 +731,10 @@
         "https://github.com/langchain-ai/langchain/releases/tag/langchain-ollama%3D%3D1.2.0",
         "https://github.com/langchain-ai/langchain/releases/tag/langchain-tests%3D%3D1.2.0",
         "https://github.com/langchain-ai/langchain/releases/tag/langchain-text-splitters%3D%3D1.2.0",
-        "https://github.com/ollama/ollama/releases/tag/v0.40.17"
+        "https://github.com/ollama/ollama/releases/tag/v0.40.17",
+        "https://github.com/ollama/ollama/releases/tag/v0.40.18",
+        "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.331"
       ],
       "events": [
         "https://gdg.community.dev/events/details/google-gdg-taipei-presents-flutter-meetup-40/",
@@ -711,7 +746,13 @@
         "https://huggingface.co/papers/2611.26603",
         "https://huggingface.co/papers/2611.18397",
         "https://huggingface.co/papers/2610.14224",
-        "https://huggingface.co/papers/2412.20138"
+        "https://huggingface.co/papers/2412.20138",
+        "https://huggingface.co/papers/2610.22732",
+        "https://huggingface.co/papers/2309.06180",
+        "https://huggingface.co/papers/2407.16741",
+        "https://huggingface.co/papers/2611.23144",
+        "https://huggingface.co/papers/2608.16157",
+        "https://huggingface.co/papers/2508.16279"
       ],
       "tutorials": [
         "https://community.openai.com/t/a-universal-model-that-isnt-allowed-to-be-universal/1419840",
@@ -723,7 +764,17 @@
         "https://community.openai.com/t/feature-request-turn-chatgpt-projects-into-persistent-ai-workspaces-chats-sources-outputs/1419826",
         "https://community.openai.com/t/anyone-else-seeing-gpt-5-6-sol-switch-to-gpt-6-in-new-chats/1419824",
         "https://dev.to/hacksgr/researchers-spot-fake-ads-for-codex-claude-code-and-homebrew-in-google-ads-2j1c",
-        "https://dev.to/icegaming/claude-code-is-great-it-also-forgets-everything-3hd8"
+        "https://dev.to/icegaming/claude-code-is-great-it-also-forgets-everything-3hd8",
+        "https://community.openai.com/t/feature-request-collapsible-chatgpt-responses/1420210",
+        "https://community.openai.com/t/fullscreen-plugins-unresponsive-to-touch-input-on-mobile-devices/1420208",
+        "https://community.openai.com/t/api-for-business-profile-insights/1420207",
+        "https://simonwillison.net/2026/Nov/24/astra-historical-mystery/",
+        "https://community.openai.com/t/feature-request-connected-chats-multi-conversation-context-integration/1420204",
+        "https://community.openai.com/t/feature-request-bring-telegram-inspired-message-management-features-to-ai-chatbots/1420203",
+        "https://community.openai.com/t/feature-request-personalized-ai-voices-individual-ai-identities-and-voice-calling/1420200",
+        "https://community.openai.com/t/que-la-conversacion-quede-inutilizable-en-el-modo-incognito-por-deslizar-el-dedo-hacia-abajo/1420196",
+        "https://community.openai.com/t/create-videos-and-reels-directly-from-photoshop-in-chatgpt/1420194",
+        "https://dev.to/domitorai/i-ran-ai-agents-against-167-real-mcp-servers-six-in-ten-of-their-mistakes-were-repeats-59hb"
       ],
       "research": [
         "https://research.google/blog/supercharging-transformer-residual-connections/",
@@ -735,7 +786,14 @@
         "https://www.lesswrong.com/posts/FXGukrjX3bWCi7ycR/moderately-cursed-questions-of-ai-safety",
         "https://www.lesswrong.com/posts/uK7buQSGjSrbyFw5k/the-disappointment-of-a-satisfying-explanation",
         "https://www.lesswrong.com/posts/3znHBDGQWBjhWEKcQ/obstacles-to-mindreading-simple-irreducible-and-instrumental",
-        "https://eugeneyan.com/writing/public-evals"
+        "https://eugeneyan.com/writing/public-evals",
+        "https://www.anthropic.com/research/working-with-ai",
+        "https://www.lesswrong.com/posts/s5dhSdQZDEsEemYbL/an-ai-economy-won-t-need-humans-to-provide-demand",
+        "https://www.lesswrong.com/posts/hNsPFqdYtjKguaSmv/what-if-the-rsa-rumors-are-true",
+        "https://www.lesswrong.com/posts/nCjAug5FgsCevAEGg/the-new-metr-time-horizon-results-basic-explainer",
+        "https://www.lesswrong.com/posts/yCrcj28HdLt4yxT48/the-pythagorean-theorem-as-a-whole-with-its-own-character",
+        "https://latent.space/p/ainews-jensen-is-back-and-openai-shows-its-pretraining-curve-joined-by-microsoft/",
+        "https://www.lesswrong.com/posts/89ag6LMRYkZcd9T4u/how-hard-to-optimize-for-experiencing-great-art"
       ]
     }
   }
