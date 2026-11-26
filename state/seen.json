@@ -362,7 +362,8 @@
         "rss:https://www.malilion.com/articles/software-testing-guide",
         "rss:https://www.malilion.com/articles/cloudflare-free-plan-edge",
         "rss:https://www.malilion.com/articles/meta-muse-developer-report",
-        "rss:https://www.malilion.com/articles/cloudflare-free-plan-overview"
+        "rss:https://www.malilion.com/articles/cloudflare-free-plan-overview",
+        "rss:https://www.malilion.com/articles/cloudflare-free-plan-deploy"
       ],
       "backfilling": false
     },
@@ -389,14 +390,6 @@
     }
   },
   "replies": {
-    "threads:17884361967534935": {
-      "threadId": "1574610756178022541",
-      "publishedAt": "2026-11-12T05:25:16+0000",
-      "seen": [
-        "18082105592392575"
-      ],
-      "done": true
-    },
     "threads:17992761564073699": {
       "threadId": "1574610756656173202",
       "publishedAt": "2026-11-12T06:47:30+0000",
