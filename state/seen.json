@@ -363,7 +363,19 @@
         "rss:https://www.malilion.com/articles/cloudflare-free-plan-edge",
         "rss:https://www.malilion.com/articles/meta-muse-developer-report",
         "rss:https://www.malilion.com/articles/cloudflare-free-plan-overview",
-        "rss:https://www.malilion.com/articles/cloudflare-free-plan-deploy"
+        "rss:https://www.malilion.com/articles/cloudflare-free-plan-deploy",
+        "rss:https://www.malilion.com/articles/2026-07-01/hello-malilion",
+        "rss:https://www.malilion.com/articles/2026-10-09/malilion-toolbox",
+        "rss:https://www.malilion.com/articles/2026-10-09/meta-muse-taiwan-early-access",
+        "rss:https://www.malilion.com/articles/2026-10-10/meta-muse-trial-report",
+        "rss:https://www.malilion.com/articles/2026-10-13/git-commands-basics",
+        "rss:https://www.malilion.com/articles/2026-10-14/git-commands-history-branch",
+        "rss:https://www.malilion.com/articles/2026-10-15/git-commands-remote-rescue",
+        "rss:https://www.malilion.com/articles/2026-10-22/software-testing-guide",
+        "rss:https://www.malilion.com/articles/2026-11-04/meta-muse-developer-report",
+        "rss:https://www.malilion.com/articles/2026-11-12/cloudflare-free-plan-overview",
+        "rss:https://www.malilion.com/articles/2026-11-15/cloudflare-free-plan-edge",
+        "rss:https://www.malilion.com/articles/2026-11-26/cloudflare-free-plan-deploy"
       ],
       "backfilling": false
     },
