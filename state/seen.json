@@ -607,14 +607,14 @@
   "radar": {
     "lastDate": "2026-11-24",
     "posted": {
-      "news": "2026-11-25",
-      "official": "2026-11-25",
-      "tools": "2026-11-25",
-      "releases": "2026-11-25",
-      "events": "2026-11-25",
-      "papers": "2026-11-25",
-      "tutorials": "2026-11-25",
-      "research": "2026-11-25"
+      "news": "2026-11-26",
+      "official": "2026-11-26",
+      "tools": "2026-11-26",
+      "releases": "2026-11-26",
+      "events": "2026-11-26",
+      "papers": "2026-11-26",
+      "tutorials": "2026-11-26",
+      "research": "2026-11-26"
     },
     "seen": {
       "news": [
@@ -645,7 +645,21 @@
         "https://fzakaria.com/2026/11/23/2035-came-early",
         "https://mechanical-pencil.com/products/spray-bottle",
         "https://www.frankchiarulli.com/blog/splitting-usb-c/",
-        "https://jobs.ashbyhq.com/weave-os"
+        "https://jobs.ashbyhq.com/weave-os",
+        "https://www.wired.com/story/airplane-turbulence-is-extremely-hard-to-predict-and-avoid/",
+        "https://the-decoder.com/mit-team-discovers-that-unrealistic-training-data-makes-ai-climate-predictions-more-reliable/",
+        "https://techcrunch.com/2026/11/24/pinterest-will-now-let-parents-limit-the-ai-generated-content-their-teens-see/",
+        "https://techcrunch.com/2026/11/24/amazons-decart-acquisition-is-a-bet-on-using-software-to-narrow-the-gap-with-nvidia-in-the-ai-chip-race/",
+        "https://news.google.com/rss/articles/CBMisAFBVV95cUxQa3pxZ1lmdFZsZzg0aUo1RW1HWkRqdTc4U2U0Q1BGdFRUQWZCSExKdk5zMWE1QTZTXzdYRzhaZDl2cXZQbUJJZWlMVEs2SEdZV3hvRmsyc1BnN2JSNWEyY1FDUWxUSUkxa2FEWlYwdXVvcDk5bndzclBPYnNXMk9yVVMyNVdmM3FKbVJPZE9SRjd4ZGRpNkJrMGJTV0o5ZDBOeEJBblZVUG1QaUtaY2JyOA?oc=5",
+        "https://www.axios.com/2026/11/25/anthropic-ai-human-control-debate-free-will",
+        "https://www.technologyreview.com/2026/11/25/1149702/ai-is-straining-americas-open-records-systems/",
+        "https://www.ithome.com.tw/news/180738",
+        "https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf",
+        "https://buttons.joshwcomeau.com/",
+        "https://marioschlosser.org/riemann/",
+        "https://gpu-demo-gallery.pages.dev/",
+        "https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being",
+        "https://antcating.github.io/2026/11/23/getting-old-java-phones-online-again.html"
       ],
       "official": [
         "https://huggingface.co/blog/allenai/robotrack",
@@ -660,7 +674,10 @@
         "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/",
         "https://openai.com/index/introducing-shirudo",
         "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
-        "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/"
+        "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/",
+        "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga",
+        "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities",
+        "https://openai.com/index/searching-for-distant-planets-with-astra"
       ],
       "tools": [
         "https://github.com/elementalsouls/Claude-BugHunter",
@@ -688,7 +705,20 @@
         "https://github.com/joonfjp/yoltapp",
         "https://github.com/EdonZo/sidemoon",
         "https://github.com/AryabhattaLabs/agent-tool-result-reducer",
-        "https://masondata.ai/"
+        "https://masondata.ai/",
+        "https://github.com/ag-ui-protocol/ag-ui",
+        "https://github.com/meta/astryx",
+        "https://github.com/pookjw/HermesEnabler",
+        "https://github.com/we-promise/sure",
+        "https://github.com/Tracer-Cloud/opensre",
+        "https://github.com/XiaoYouChR/Ghost-Downloader-3",
+        "https://github.com/zhouxiaoka/autoclip",
+        "https://github.com/Imbad0202/academic-research-skills",
+        "https://blakelapierre.github.io/meridian/hold/play/",
+        "https://beltandbox.com/play/",
+        "https://github.com/mr0b0t0/plinth",
+        "https://just-dashboard.com/",
+        "https://github.com/ScarfazeCompany/scar-script"
       ],
       "releases": [
         "https://github.com/langchain-ai/langchain/releases/tag/langchain-qdrant%3D%3D1.2.0",
@@ -699,7 +729,9 @@
         "https://github.com/ollama/ollama/releases/tag/v0.40.17",
         "https://github.com/ollama/ollama/releases/tag/v0.40.18",
         "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.331"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.331",
+        "https://github.com/open-webui/open-webui/releases/tag/v0.13.5",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.332"
       ],
       "events": [
         "https://gdg.community.dev/events/details/google-gdg-taipei-presents-flutter-meetup-40/",
@@ -717,7 +749,13 @@
         "https://huggingface.co/papers/2407.16741",
         "https://huggingface.co/papers/2611.23144",
         "https://huggingface.co/papers/2608.16157",
-        "https://huggingface.co/papers/2508.16279"
+        "https://huggingface.co/papers/2508.16279",
+        "https://huggingface.co/papers/2611.31201",
+        "https://huggingface.co/papers/2605.03042",
+        "https://huggingface.co/papers/2407.17789",
+        "https://huggingface.co/papers/2609.18063",
+        "https://huggingface.co/papers/2509.22186",
+        "https://huggingface.co/papers/2506.13771"
       ],
       "tutorials": [
         "https://community.openai.com/t/a-universal-model-that-isnt-allowed-to-be-universal/1419840",
@@ -739,7 +777,17 @@
         "https://community.openai.com/t/feature-request-personalized-ai-voices-individual-ai-identities-and-voice-calling/1420200",
         "https://community.openai.com/t/que-la-conversacion-quede-inutilizable-en-el-modo-incognito-por-deslizar-el-dedo-hacia-abajo/1420196",
         "https://community.openai.com/t/create-videos-and-reels-directly-from-photoshop-in-chatgpt/1420194",
-        "https://dev.to/domitorai/i-ran-ai-agents-against-167-real-mcp-servers-six-in-ten-of-their-mistakes-were-repeats-59hb"
+        "https://dev.to/domitorai/i-ran-ai-agents-against-167-real-mcp-servers-six-in-ten-of-their-mistakes-were-repeats-59hb",
+        "https://community.openai.com/t/add-a-delete-file-option-to-the-chatgpt-image-preview-toolbar/1420725",
+        "https://dev.to/kevinhall/find-the-investors-who-backed-startups-like-yours-in-claude-code-1456",
+        "https://community.openai.com/t/chatgpt-coreldraw-integration-with-editable-vectors-and-print-ready-pdf-export/1420715",
+        "https://community.openai.com/t/chatgpt-work-space-404-destination-folder-was-not-found-when-saving-files-to-existing-folders-since-november-12/1420713",
+        "https://community.openai.com/t/gpt-live-feature-request-silence-event/1420712",
+        "https://community.openai.com/t/chatgpt-pro-suddenly-extremely-slow-in-work-and-codex-but-regular-chat-works-fine-account-specific-issue/1420709",
+        "https://community.openai.com/t/please-give-users-a-way-to-continue-using-the-models-they-have-worked-with-for-a-long-time/1420707",
+        "https://community.openai.com/t/feature-request-bring-full-action-capabilities-to-chat-mode-one-gpt-one-unified-experience/1420702",
+        "https://community.openai.com/t/gpt-5-6-sol-versus-gpt-6-x-series/1420699",
+        "https://dev.to/mkarytka/i-deleted-my-ai-code-reviewers-most-expensive-mode-after-83-blind-judged-runs-17jf"
       ],
       "research": [
         "https://research.google/blog/supercharging-transformer-residual-connections/",
@@ -758,7 +806,13 @@
         "https://www.lesswrong.com/posts/nCjAug5FgsCevAEGg/the-new-metr-time-horizon-results-basic-explainer",
         "https://www.lesswrong.com/posts/yCrcj28HdLt4yxT48/the-pythagorean-theorem-as-a-whole-with-its-own-character",
         "https://latent.space/p/ainews-jensen-is-back-and-openai-shows-its-pretraining-curve-joined-by-microsoft/",
-        "https://www.lesswrong.com/posts/89ag6LMRYkZcd9T4u/how-hard-to-optimize-for-experiencing-great-art"
+        "https://www.lesswrong.com/posts/89ag6LMRYkZcd9T4u/how-hard-to-optimize-for-experiencing-great-art",
+        "https://www.lesswrong.com/posts/Drj97tmuiWF3e9Xya/anthropic-is-not-living-up-to-its-ideals",
+        "https://latent.space/p/ainews-gemini-4-neon-marks-gdm-s-full-return-as-a-frontier-lab/",
+        "https://www.lesswrong.com/posts/LrWJeEDCriLmAgFXr/levent-is-my-favorite-gender-role",
+        "https://www.lesswrong.com/posts/rXixzzScjLrnNZ4vo/fable-5-2-tries-less-on-some-hard-tasks-when-a-shortcut-is",
+        "https://www.lesswrong.com/posts/zSEkSW76EjniiQreA/i-never-understood-levers",
+        "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/"
       ]
     }
   }
