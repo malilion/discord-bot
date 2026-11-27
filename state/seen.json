@@ -606,14 +606,14 @@
   "radar": {
     "lastDate": "2026-11-24",
     "posted": {
-      "news": "2026-11-26",
-      "official": "2026-11-26",
-      "tools": "2026-11-26",
-      "releases": "2026-11-26",
-      "events": "2026-11-26",
-      "papers": "2026-11-26",
-      "tutorials": "2026-11-26",
-      "research": "2026-11-26"
+      "news": "2026-11-27",
+      "official": "2026-11-27",
+      "tools": "2026-11-27",
+      "releases": "2026-11-27",
+      "events": "2026-11-27",
+      "papers": "2026-11-27",
+      "tutorials": "2026-11-27",
+      "research": "2026-11-27"
     },
     "seen": {
       "news": [
@@ -658,7 +658,21 @@
         "https://marioschlosser.org/riemann/",
         "https://gpu-demo-gallery.pages.dev/",
         "https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being",
-        "https://antcating.github.io/2026/11/23/getting-old-java-phones-online-again.html"
+        "https://antcating.github.io/2026/11/23/getting-old-java-phones-online-again.html",
+        "https://news.google.com/rss/articles/CBMikwFBVV95cUxOS3JwSkdMcWdVNGFyN3c5eENLZlkxN0JLT0ZDQUVycUczaTdVNG9fbU9TcG1zSTlrTFB0YmdOczAwVXd6U1U1WENFbjh2dFZ5bUtXZlJTNXJqSHI3VmxITWt2ckxOVFNQOC1XaGNwWElmdHloREREZVBEZUV2WVItOFQ5WkZJeFdSRTVBcnJVcmlXdXM?oc=5",
+        "https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/",
+        "https://the-decoder.com/former-openai-researcher-says-the-riemann-proof-matters-less-than-the-fact-that-an-ai-system-can-produce-it/",
+        "https://news.google.com/rss/articles/CBMiTkFVX3lxTE8tNTJyUDQyc1F5RFB1UkFnUlBhVlJ4RHZyTW8zQXZLX29kOUp0Zks2YUdGT3BjaEFHMFQxak9ya29Fb1RNWU5tdnZQdzRKQQ?oc=5",
+        "https://www.engadget.com/2329200/nvidia-reportedly-halts-chip-shipments-to-southeast-asia/",
+        "https://the-decoder.com/gpt-6-2-astra-users-now-hit-limits-40-faster-after-openai-patched-a-pricing-error/",
+        "https://www.cnbc.com/2026/11/26/neoclouds-nvidia-china-ai.html",
+        "https://news.google.com/rss/articles/CBMia0FVX3lxTE13blM2bzNuVVRRbkxEaE5mRTMxQXJWSjBnZVhhRmJBRHktWWNGVFZHaS1FTmJWZHczN3dFeGZhdWhkVVJWUUpidWlmc04xeWNNRjVGWXRpbGlTVkV4M29GckU5bEpNNEVJWm9z?oc=5",
+        "https://janlukas.blog/posts/ai-self-hosting",
+        "https://worksinprogress.co/issue/the-greatest-architect-youve-never-heard-of-is-in-pakistan/",
+        "https://devnull.land/amd-specific-llama-cpp",
+        "https://github.com/antonpictures/youtube-punisher",
+        "https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/",
+        "https://github.com/eisenzopf/rvoip"
       ],
       "official": [
         "https://huggingface.co/blog/allenai/robotrack",
@@ -676,7 +690,12 @@
         "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/",
         "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga",
         "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities",
-        "https://openai.com/index/searching-for-distant-planets-with-astra"
+        "https://openai.com/index/searching-for-distant-planets-with-astra",
+        "https://blogs.nvidia.com/blog/geforce-now-thursday-community-war-thunder-reward/",
+        "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
+        "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+        "https://huggingface.co/blog/training-swarms",
+        "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents"
       ],
       "tools": [
         "https://github.com/elementalsouls/Claude-BugHunter",
@@ -717,7 +736,17 @@
         "https://beltandbox.com/play/",
         "https://github.com/mr0b0t0/plinth",
         "https://just-dashboard.com/",
-        "https://github.com/ScarfazeCompany/scar-script"
+        "https://github.com/ScarfazeCompany/scar-script",
+        "https://github.com/n8n-io/nod",
+        "https://github.com/wshobson/agents",
+        "https://github.com/apache/airflow",
+        "https://github.com/microsoft/markitdown",
+        "https://github.com/SWE-agent/mini-swe-agent",
+        "https://github.com/octelium/cordium",
+        "https://turkey-trot.replit.app/",
+        "https://glassveil.app",
+        "https://github.com/obendidi/trackflow",
+        "https://shirudo.today/blog/launch.html"
       ],
       "releases": [
         "https://github.com/langchain-ai/langchain/releases/tag/langchain-qdrant%3D%3D1.2.0",
@@ -730,7 +759,10 @@
         "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.331",
         "https://github.com/open-webui/open-webui/releases/tag/v0.13.5",
-        "https://github.com/anthropics/claude-code/releases/tag/v2.1.332"
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.332",
+        "https://github.com/ollama/ollama/releases/tag/v0.40.19-rc0",
+        "https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.8.5",
+        "https://github.com/langchain-ai/langchain/releases/tag/langchain-anthropic%3D%3D1.7.13"
       ],
       "events": [
         "https://gdg.community.dev/events/details/google-gdg-taipei-presents-flutter-meetup-40/",
@@ -754,7 +786,13 @@
         "https://huggingface.co/papers/2407.17789",
         "https://huggingface.co/papers/2609.18063",
         "https://huggingface.co/papers/2509.22186",
-        "https://huggingface.co/papers/2506.13771"
+        "https://huggingface.co/papers/2506.13771",
+        "https://huggingface.co/papers/2603.16790",
+        "https://huggingface.co/papers/2606.03264",
+        "https://huggingface.co/papers/2311.07911",
+        "https://huggingface.co/papers/2503.11576",
+        "https://huggingface.co/papers/2611.34923",
+        "https://huggingface.co/papers/2611.34941"
       ],
       "tutorials": [
         "https://community.openai.com/t/a-universal-model-that-isnt-allowed-to-be-universal/1419840",
@@ -786,7 +824,17 @@
         "https://community.openai.com/t/please-give-users-a-way-to-continue-using-the-models-they-have-worked-with-for-a-long-time/1420707",
         "https://community.openai.com/t/feature-request-bring-full-action-capabilities-to-chat-mode-one-gpt-one-unified-experience/1420702",
         "https://community.openai.com/t/gpt-5-6-sol-versus-gpt-6-x-series/1420699",
-        "https://dev.to/mkarytka/i-deleted-my-ai-code-reviewers-most-expensive-mode-after-83-blind-judged-runs-17jf"
+        "https://dev.to/mkarytka/i-deleted-my-ai-code-reviewers-most-expensive-mode-after-83-blind-judged-runs-17jf",
+        "https://community.openai.com/t/please-add-a-warning-and-save-point-system-for-long-conversations/1421464",
+        "https://community.openai.com/t/thankful-day-thoughtful-observations/1421462",
+        "https://community.openai.com/t/chat-memory-full-unresolved-support-case-and-repeated-conversation-blocked/1421461",
+        "https://community.openai.com/t/introducing-new-shared-student-plan/1421451",
+        "https://community.openai.com/t/feature-request-for-age-verified-adult-mode-and-immersive-character-voice-mode/1421450",
+        "https://community.openai.com/t/windows-dot-no-longer-uses-computer-use-in-existing-codex-chats/1421444",
+        "https://community.openai.com/t/cant-do-any-post-using-gpt-sites/1421442",
+        "https://community.openai.com/t/codex-5-hour-usage-limit-draining-while-idle/1421439",
+        "https://community.openai.com/t/2027-predictions-for-ai-and-predictions-by-ai/1421421",
+        "https://community.openai.com/t/a-new-application-perspective-gardian-ai/1421420"
       ],
       "research": [
         "https://research.google/blog/supercharging-transformer-residual-connections/",
@@ -811,7 +859,15 @@
         "https://www.lesswrong.com/posts/LrWJeEDCriLmAgFXr/levent-is-my-favorite-gender-role",
         "https://www.lesswrong.com/posts/rXixzzScjLrnNZ4vo/fable-5-2-tries-less-on-some-hard-tasks-when-a-shortcut-is",
         "https://www.lesswrong.com/posts/zSEkSW76EjniiQreA/i-never-understood-levers",
-        "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/"
+        "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/",
+        "https://research.google/blog/verifiable-social-reasoning-for-llm-assistants/",
+        "https://www.anthropic.com/research/migrating-api-to-rust",
+        "https://latent.space/p/how-clay-builds-gtm-agents-jeff-barg-head-of-ai/",
+        "https://www.lesswrong.com/posts/F7DNBdoADqktjn2Hk/understanding-why-1-2-3-4-5-1-12-rather-than-infinity",
+        "https://www.lesswrong.com/posts/f5r7FpLWiFQ7aeJu9/go-seeking-mysteries",
+        "https://www.lesswrong.com/posts/qvy8Tvhzg2PgfvHcs/recursive-self-alignment-the-model-is-the-estimator",
+        "https://www.lesswrong.com/posts/TmLSELruftgknLafm/to-read-sam-kriss-is-to-hurt-sam-kriss",
+        "https://www.lesswrong.com/posts/2nuNydxTyMPneLRdH/a-therapist-s-guide-to-the-singularity"
       ]
     }
   }
