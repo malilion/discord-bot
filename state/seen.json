@@ -626,14 +626,14 @@
   "radar": {
     "lastDate": "2026-11-24",
     "posted": {
-      "news": "2026-11-27",
-      "official": "2026-11-27",
-      "tools": "2026-11-27",
-      "releases": "2026-11-27",
-      "events": "2026-11-27",
-      "papers": "2026-11-27",
-      "tutorials": "2026-11-27",
-      "research": "2026-11-27"
+      "news": "2026-11-28",
+      "official": "2026-11-28",
+      "tools": "2026-11-28",
+      "releases": "2026-11-28",
+      "events": "2026-11-28",
+      "papers": "2026-11-28",
+      "tutorials": "2026-11-28",
+      "research": "2026-11-28"
     },
     "seen": {
       "news": [
@@ -692,7 +692,21 @@
         "https://devnull.land/amd-specific-llama-cpp",
         "https://github.com/antonpictures/youtube-punisher",
         "https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/",
-        "https://github.com/eisenzopf/rvoip"
+        "https://github.com/eisenzopf/rvoip",
+        "https://news.google.com/rss/articles/CBMinwFBVV95cUxNRkE3X1Baa0pRRUQ1S0tVRk5IRy04ZUhmU0paRTRENFZleGNvRldiRWkyMEg5cVUzT3Bfb19YdmNHOFVmRkEycHE5YUJKMFZRRmpXMXdtX3FUMHRtTGc4V1pHUXFFOXdINDZIWDVndGxKYUx5ZlhNREFna25iYWRGeWNXT1FpYzJ0Sk5Ldm1BSDQ4LW56WDQtaDBudXltNm8?oc=5",
+        "https://news.google.com/rss/articles/CBMif0FVX3lxTFBzUzM4Rng5MXFRdDlBSmFLWlNaNXZVdG8xeHZhODRXYWszWThUaWg5SzVQWl8wYktJRjFDYkNPSW96bFJ4S0hpd0xCd2twazhQM2p5cXpVc1F4eVluUTdPb2h4S3U0N1lLMHdaNU9PUTFBTmYyNGxfMUM4OE9wUW8?oc=5",
+        "https://www.engadget.com/2329851/la-school-district-blocks-google-ai-search-features/",
+        "https://news.google.com/rss/articles/CBMid0FVX3lxTFBOX05aeWRCbU85TmZFLVUyU25VdG9WeEd3ZWg4b25EUmJQZW5Zem9MdnU2akM1OFhCNVNmM0JHZkhYVjllQ0RhMjVrdVNSc1RhSEtIQ0VlV09EVHVpWk5sbWhRbHRmQlJFWmFVZTNMWUU2YUp1Y2xF?oc=5",
+        "https://news.google.com/rss/articles/CBMinwFBVV95cUxOYUlPcTZHQ0k0RFpyYU1ycU8tUk1yaG5JSGJzbjFHckoxMkVqRWo2UG5VaGVfenJLNHI2dVRwZVZtbnNTSWdjQ3NNRXVBbjl2cFBEUVRxYjBaRENCU2VGUXpwXzlzNUtoYm9mUHM4WlBsS1l4VmxRYjRNM05mSTkxNTlsMDUwUzMwdER3QzJtcWZsblJ5R1FaTTVRNER3NzQ?oc=5",
+        "https://news.google.com/rss/articles/CBMijwFBVV95cUxNVlhoRnlPeG5qUGJfdWliX1pxRkZJcXFocVJObC1wYmdUdVUyeXQ4Q2Q5dG9MY193LVlVZ04wQUdQcmZaYjJLUXhTNHAzMEMtSmVWZXNxMUJjREtHYTlKU3JiNTVfLXA5dlc4a1RZakdCOV9LOFUyUzJoQTZ2RWFIN2ZJeGJLczN0VDdxZ1llcw?oc=5",
+        "https://www.engadget.com/2329765/samsung-is-reportedly-giving-its-camera-app-an-ai-mode/",
+        "https://www.engadget.com/2329748/restricted-nvidia-chips-were-installed-at-a-chinese-data-center-linked-to-alice-huang/",
+        "https://generativehistory.substack.com/p/gpt-62-astra-solves-a-historical",
+        "https://www.infohawk.com/news/2026-11-27-black-friday-webrtc-skimmer",
+        "https://github.com/convex/convex-backend-skill/issues/64",
+        "https://www.citroenet.org.uk/miscellaneous/hydraulics/hydraulics-1.html",
+        "https://twitter.com/michael_nielsen/status/2126359767362748777",
+        "https://virtuallyfun.com/2026/11/22/the-ultimate-att-unix-pc-3b1-vm-w-tcp-ip-and-apps/"
       ],
       "official": [
         "https://huggingface.co/blog/allenai/robotrack",
@@ -715,7 +729,8 @@
         "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
         "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
         "https://huggingface.co/blog/training-swarms",
-        "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents"
+        "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents",
+        "https://huggingface.co/blog/video-trainium3"
       ],
       "tools": [
         "https://github.com/elementalsouls/Claude-BugHunter",
@@ -766,7 +781,12 @@
         "https://turkey-trot.replit.app/",
         "https://glassveil.app",
         "https://github.com/obendidi/trackflow",
-        "https://shirudo.today/blog/launch.html"
+        "https://shirudo.today/blog/launch.html",
+        "https://www.youtube.com/watch?v=2zufRUcZeuc",
+        "https://warblize.com/",
+        "https://github.com/Marvinviverge/virtum",
+        "https://github.com/YasserShkeir/glossbeam-open",
+        "https://github.com/run-llama/sentinel"
       ],
       "releases": [
         "https://github.com/langchain-ai/langchain/releases/tag/langchain-qdrant%3D%3D1.2.0",
@@ -782,7 +802,8 @@
         "https://github.com/anthropics/claude-code/releases/tag/v2.1.332",
         "https://github.com/ollama/ollama/releases/tag/v0.40.19-rc0",
         "https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.8.5",
-        "https://github.com/langchain-ai/langchain/releases/tag/langchain-anthropic%3D%3D1.7.13"
+        "https://github.com/langchain-ai/langchain/releases/tag/langchain-anthropic%3D%3D1.7.13",
+        "https://github.com/ollama/ollama/releases/tag/v0.40.19"
       ],
       "events": [
         "https://gdg.community.dev/events/details/google-gdg-taipei-presents-flutter-meetup-40/",
@@ -812,7 +833,13 @@
         "https://huggingface.co/papers/2311.07911",
         "https://huggingface.co/papers/2503.11576",
         "https://huggingface.co/papers/2611.34923",
-        "https://huggingface.co/papers/2611.34941"
+        "https://huggingface.co/papers/2611.34941",
+        "https://huggingface.co/papers/2611.34232",
+        "https://huggingface.co/papers/2610.22471",
+        "https://huggingface.co/papers/2504.19413",
+        "https://huggingface.co/papers/2604.14141",
+        "https://huggingface.co/papers/2504.12451",
+        "https://huggingface.co/papers/2508.02739"
       ],
       "tutorials": [
         "https://community.openai.com/t/a-universal-model-that-isnt-allowed-to-be-universal/1419840",
@@ -854,7 +881,17 @@
         "https://community.openai.com/t/cant-do-any-post-using-gpt-sites/1421442",
         "https://community.openai.com/t/codex-5-hour-usage-limit-draining-while-idle/1421439",
         "https://community.openai.com/t/2027-predictions-for-ai-and-predictions-by-ai/1421421",
-        "https://community.openai.com/t/a-new-application-perspective-gardian-ai/1421420"
+        "https://community.openai.com/t/a-new-application-perspective-gardian-ai/1421420",
+        "https://community.openai.com/t/alphabetical-sorting-of-projects/1421937",
+        "https://dev.to/pickaplugin/a-no-vibes-filter-for-picking-a-codex-plugin-13l5",
+        "https://community.openai.com/t/goodbye-gpt-5-6-sol-and-goodbye-openai/1421932",
+        "https://community.openai.com/t/monthly-usage-limit-instead-of-weekly/1421930",
+        "https://dev.to/diogo_mendes_13ae8cdfc61e/get-notified-when-claude-code-needs-approval-or-finishes-49bf",
+        "https://dev.to/bennialencar/bitemporal-knowledge-graphs-for-claude-code-stopping-context-rot-across-50-turn-sessions-24j2",
+        "https://community.openai.com/t/feature-request-chat-conversation-capacity-percentage-indicator/1421927",
+        "https://community.openai.com/t/multi-person-live-development-whit-in-ite-links-to-chats/1421926",
+        "https://community.openai.com/t/codex-for-open-source-accepted-aug-10-never-redeemed-activation-link-now-says-promo-code-is-invalid/1421925",
+        "https://community.openai.com/t/beyond-a-single-frontier-model-preserve-gpt-5-6-sol-pro-and-build-an-ecosystem-of-intelligence/1421921"
       ],
       "research": [
         "https://research.google/blog/supercharging-transformer-residual-connections/",
@@ -887,7 +924,12 @@
         "https://www.lesswrong.com/posts/f5r7FpLWiFQ7aeJu9/go-seeking-mysteries",
         "https://www.lesswrong.com/posts/qvy8Tvhzg2PgfvHcs/recursive-self-alignment-the-model-is-the-estimator",
         "https://www.lesswrong.com/posts/TmLSELruftgknLafm/to-read-sam-kriss-is-to-hurt-sam-kriss",
-        "https://www.lesswrong.com/posts/2nuNydxTyMPneLRdH/a-therapist-s-guide-to-the-singularity"
+        "https://www.lesswrong.com/posts/2nuNydxTyMPneLRdH/a-therapist-s-guide-to-the-singularity",
+        "https://latent.space/p/inside_the_ai_training_data_market_gabe_greenberg_g2i/",
+        "https://www.lesswrong.com/posts/2EQ2y3eGqm952tAZ6/a-basic-case-against-differentially-accelerating-conceptual-1",
+        "https://www.lesswrong.com/posts/y8K3FREw4R7me99ib/reflections-on-37-weeks-of-hosting-ea-lw-acx-board-games",
+        "https://latent.space/p/the_revolution_vs_the_renaissance_thariq_shihipar_openai/",
+        "https://latent.space/p/ainews-math-proofs-are-landing-faster-than-we-can-read-them/"
       ]
     }
   }
